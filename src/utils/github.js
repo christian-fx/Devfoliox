@@ -13,5 +13,3 @@ async function validateUsername(username) {
 }
 
 module.exports = { validateUsername };
-
-validateUsername('allwellazubike').then(data => console.log(data.name, data.bio));
