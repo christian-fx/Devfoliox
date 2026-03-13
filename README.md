@@ -67,15 +67,20 @@ The CLI will ask two questions:
 ```
 ? Enter your GitHub username: › your-username
 ? Choose a template: › (use arrow keys)
-  ❯ Minimal
-    Creative
-    Dark Pro
+  ❯ minimal
+    modern
+```
+
+You can also run it non-interactively:
+
+```bash
+npx devfolio generate your-username --template minimal
 ```
 
 A new project folder is created in your current directory. Navigate into it and start the dev server:
 
 ```bash
-cd your-username-portfolio
+cd portfolio-your-username
 npm install
 npm run dev
 ```
@@ -109,7 +114,7 @@ npx devfolio
 └─────────────────────────────────┘
 ```
 
-The CLI copies the chosen template into a new directory named `<username>-portfolio`, then writes a small config file (`devfolio.config.js`) with the GitHub username. When the React app loads in the browser, it reads this config and queries the GitHub REST API to populate every section of the portfolio dynamically.
+The CLI copies the chosen template into a new directory named `portfolio-<username>`, then writes a small config file (`src/config.js`) with the GitHub username. When the React app loads in the browser, it reads this config and queries the GitHub REST API to populate every section of the portfolio dynamically.
 
 ---
 
@@ -118,8 +123,7 @@ The CLI copies the chosen template into a new directory named `<username>-portfo
 | Template | Description |
 |---|---|
 | **Minimal** | Clean, single-page layout focused on readability. |
-| **Creative** | Bold hero section with colourful project cards. |
-| **Dark Pro** | Dark-mode design ideal for backend and systems developers. |
+| **Modern** | Contemporary layout with richer visual hierarchy. |
 
 More templates are in development. Community contributions are welcome — see [Contributing](#contributing).
 
@@ -130,7 +134,7 @@ More templates are in development. Community contributions are welcome — see [
 After running `npx devfolio`, the generated project looks like this:
 
 ```
-your-username-portfolio/
+portfolio-your-username/
 ├── public/
 │   └── favicon.svg
 ├── src/
@@ -142,10 +146,10 @@ your-username-portfolio/
 │   │   └── Footer.jsx
 │   ├── hooks/
 │   │   └── useGitHub.js        # fetches data from the GitHub API
+│   ├── config.js               # generated GitHub username config
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
-├── devfolio.config.js           # your GitHub username lives here
 ├── index.html
 ├── tailwind.config.js
 ├── vite.config.js
@@ -156,16 +160,11 @@ your-username-portfolio/
 
 ## Configuration
 
-Open `devfolio.config.js` in the generated project to customise basic settings:
+Open `src/config.js` in the generated project to update the GitHub username:
 
 ```js
-// devfolio.config.js
-export default {
-  username: "your-github-username",   // GitHub username (set automatically by the CLI)
-  pinnedReposFirst: true,              // show pinned repos at the top
-  maxRepos: 12,                        // maximum number of repos to display
-  animations: true,                    // enable / disable Framer Motion animations
-};
+// src/config.js
+export const GITHUB_USERNAME = "your-github-username";
 ```
 
 All other visual changes are made by editing the React components and Tailwind classes directly — no special build step required.

@@ -2,6 +2,9 @@ const axios = require('axios');
 
 async function validateUsername(username) {
     try {
+        if (!username || typeof username !== 'string' || !username.trim()) {
+            throw new Error('GitHub username is required and must be a non-empty string.');
+        }
         const response = await axios.get(`https://api.github.com/users/${username}`);
         return response.data;
     } catch (error) {
