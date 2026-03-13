@@ -5,6 +5,9 @@ async function validateUsername(username) {
         const response = await axios.get(`https://api.github.com/users/${username}`);
         return response.data;
     } catch (error) {
+        if (error.response && error.response.status !== 404) {
+            throw new Error(`Unable to validate GitHub username "${username}". Status code: ${error.response.status}`);
+        }
         if (error.response && error.response.status === 404) {
             throw new Error(`GitHub user "${username}" not found.`);
         }
