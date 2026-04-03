@@ -14,20 +14,21 @@ program
     .command('init')
     .description('Run interactive setup to generate a portfolio')
     .action(async () => {
-        const { username, template } = await runInteractiveGenerate();
-        await runGenerate(username, { template });
+        const { username, template, stack } = await runInteractiveGenerate();
+        await runGenerate(username, { template, stack });
     });
 
 
 
-// ONE-LINER FOR NON-INTERACTIVE USAGE (eg: npx devfolio generate <username> <modern>)
+// ONE-LINER FOR NON-INTERACTIVE USAGE (eg: npx devfolio generate <username> -t <template> -s <stack>)
 program
     .command('generate')
-    .description('Generate a portfolio for the given GitHub username in one command')
+    .description('Generate a portfolio for the given GitHub username in a one-line command')
     .argument('<username>', 'GitHub username to generate portfolio for')
+    .option('-s, --stack <stack>', 'Stack to use (Vanilla, React.js, or Next.js)', 'React.js')
     .option('-t, --template <template>', 'Template to use (minimal or modern)', 'minimal')
     .action(async (username, options) => {
-        await runGenerate(username, { template: options.template });
+        await runGenerate(username, { template: options.template, stack: options.stack });
     });
 
 
