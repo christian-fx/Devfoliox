@@ -21,8 +21,8 @@ async function generate(username, options = {}) {
         }
         console.log(`Found user: ${user.login}`);
 
-        console.log(`Scaffolding template: ${selectedTemplate}`);
-        const outputPath = await scaffoldPortfolio(user.login, selectedTemplate);
+        console.log(`Scaffolding Project, template: ${selectedTemplate}, stack: ${options.stack}`);
+        const outputPath = await scaffoldPortfolio(user.login, selectedTemplate, options.stack);
         if (!outputPath) {
             throw new Error('Failed to scaffold portfolio.');
         }

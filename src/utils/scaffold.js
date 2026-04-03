@@ -2,8 +2,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const generateConfig = require('./utils');
 
-async function scaffoldPortfolio(username, template) {
-    const templatePath = path.join(__dirname, '../../templates/react', template);
+async function scaffoldPortfolio(username, template, stack) {
+    const templatePath = path.join(__dirname, `../../templates/${stack}`, template);
     const outputPath = path.join(process.cwd(), `portfolio-${username}`);
 
     if (!fs.pathExistsSync(templatePath)) {
