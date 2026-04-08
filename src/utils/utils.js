@@ -1,11 +1,18 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-async function generateConfig(username, outputPath) {
-    const configPath = path.join(outputPath, 'src', 'config.js');
-    
-    
-    const fileContent = `export const GITHUB_USERNAME = ${JSON.stringify(username)};\n`;
+async function generateConfig(username, outputPath, stack) {
+    let configPath;
+    let fileContent;
+
+    if (stack === 'Vanilla') {
+        configPath = path.join(outputPath, 'js', 'config.js');
+        fileContent = `window.GITHUB_USERNAME = ${JSON.stringify(username)};\n`;
+    } else {
+        // Default to React
+        configPath = path.join(outputPath, 'src', 'config.js');
+        fileContent = `export const GITHUB_USERNAME = ${JSON.stringify(username)};\n`;
+    }
 
     try {
         await fs.outputFile(configPath, fileContent);

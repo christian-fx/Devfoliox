@@ -17,7 +17,7 @@ async function scaffoldPortfolio(username, template, stack) {
 
     await fs.copy(templatePath, outputPath);
 
-    await generateConfig(username, outputPath);
+    await generateConfig(username, outputPath, stack);
     return outputPath;
 }
 
