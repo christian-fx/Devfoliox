@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__logo" id="navName">dev</a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about"    class="mobile-link">About</a>
+    <a href="#projects" class="mobile-link">Projects</a>
+    <a href="#contact"  class="mobile-link">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">
+        <span class="dot"></span>
+        <span id="heroEyebrow">Available for work</span>
+      </p>
+      <h1 class="hero__name" id="heroName">Your Name</h1>
+      <p class="hero__role" id="heroRole">Software Developer</p>
+      <p class="hero__bio" id="heroBio">
+        I build clean, thoughtful software — from systems-level code to web interfaces.
+      </p>
+      <div class="hero__ctas">
+        <a href="#projects" class="btn">View Work</a>
+        <a href="#contact"  class="btn btn--outline">Say Hello</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <span class="section-label">About</span>
+      <div class="about__grid">
+        <div class="about__photo-wrap">
+          <img id="aboutAvatar" src="" alt="Profile photo" class="about__photo" />
+        </div>
+        <div class="about__text">
+          <h2 class="section-title">Who I Am</h2>
+          <!--get about from user bio-->
+          <p class="about__bio" id="aboutBio">—</p>
+          <ul class="about__facts" id="aboutFacts">
+            <li><span>Location</span> <strong id="metaLocation">—</strong></li>
+            <li><span>Repos</span>    <strong id="metaRepos">—</strong></li>
+            <li><span>Followers</span><strong id="metaFollowers">—</strong></li>
+            <li><span>Member since</span><strong id="metaJoined">—</strong></li>
+          </ul>
+          <div class="about__socials" id="aboutSocials"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <span class="section-label">Projects</span>
+      <h2 class="section-title">Selected Work</h2>
+      <div class="projects__grid" id="projectsGrid">
+        <div class="project-card skeleton"></div>
+        <div class="project-card skeleton"></div>
+        <div class="project-card skeleton"></div>
+      </div>
+      <div class="projects__more">
+        <a id="allReposLink" href="#" class="btn btn--outline" target="_blank" rel="noopener">All repos ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="contact__inner">
+        <span class="section-label">Contact</span>
+        <h2 class="contact__title">Let's talk.</h2>
+        <a id="contactEmail" href="mailto:you@email.com" class="contact__email">you@email.com</a>
+        <div class="contact__socials" id="contactSocials"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <span id="footerName">dev</span> · Built with Devfolio · <span id="footerYear"></span>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
