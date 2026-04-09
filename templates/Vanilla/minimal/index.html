@@ -4,76 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav__inner">
-            <span id="nav-logo" class="nav__logo">GITHUB</span>
-            <div class="nav__links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
+
+    <nav>
+        <span id="nav-logo">—</span>
+        <div class="nav-links">
+            <a href="#projects">Work</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <main>
-        <section id="about" class="hero section">
-            <div class="hero__content">
-                <p class="eyebrow">GitHub-powered portfolio</p>
-                <img id="user-avatar" class="hero__avatar" src="" alt="GitHub avatar" loading="lazy">
-                <h1 id="user-name">Loading...</h1>
-                <p id="user-bio" class="hero__bio">A clean, minimal portfolio built from your GitHub profile.</p>
-
+        <section id="about" class="hero">
+            <div class="hero-left">
+                <img id="user-avatar" src="" alt="Avatar" loading="lazy">
+            </div>
+            <div class="hero-right">
+                <h1 id="user-name">Loading</h1>
+                <p id="user-bio" class="bio">—</p>
                 <div class="stats">
                     <div class="stat">
                         <strong id="repo-count">0</strong>
-                        <span>Repositories</span>
+                        <span>repos</span>
                     </div>
                     <div class="stat">
                         <strong id="follower-count">0</strong>
-                        <span>Followers</span>
+                        <span>followers</span>
                     </div>
                     <div class="stat">
                         <strong id="following-count">0</strong>
-                        <span>Following</span>
+                        <span>following</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section section--split">
-            <div>
-                <p class="section__label">Overview</p>
-                <h2 class="section__title">Simple, focused, and readable.</h2>
-            </div>
-            <p class="section__copy">
-                The minimal template keeps the attention on your GitHub identity, your key repositories, and a direct path to contact.
-                It uses restrained spacing, a neutral palette, and very light visual treatment.
-            </p>
+        <section id="projects">
+            <p class="section-label">Selected work</p>
+            <div id="project-list" class="project-list"></div>
         </section>
 
-        <section id="projects" class="section">
-            <div class="section__header">
-                <p class="section__label">Selected Work</p>
-                <h2 class="section__title">Projects</h2>
-            </div>
-            <div id="project-grid" class="project-grid"></div>
-        </section>
-
-        <section id="contact" class="section">
-            <div class="contact-card">
-                <p class="section__label">Contact</p>
-                <h2>Let’s build something useful.</h2>
-                <p>Send a message directly using the email pulled from GitHub.</p>
-                <a id="contact-btn" class="contact-btn" href="mailto:hello@example.com">Get In Touch</a>
-            </div>
+        <section id="contact" class="contact">
+            <p class="section-label">Contact</p>
+            <a id="contact-btn" href="mailto:hello@example.com" class="contact-link">Get in touch →</a>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 <span id="footer-name">Developer</span>. Built with Devfolio.</p>
+    <footer>
+        <span id="footer-name">Developer</span>
+        <span>Built with Devfolio</span>
     </footer>
 
     <script src="js/config.js"></script>
