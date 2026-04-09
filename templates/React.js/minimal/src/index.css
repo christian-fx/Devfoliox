@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  /* Define your custom colors here for v4 */
+  --color-brand: #38A28E;
+  --color-brand-dark: #2d8373;
+  --color-canvas: #F7F7F5;
+  --color-ink: #1A1A1A;
+  
+  /* Define your custom fonts here for v4 */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  /* Use the variable you just defined */
+  @apply bg-canvas text-ink antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
