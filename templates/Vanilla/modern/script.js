@@ -25,6 +25,28 @@
     return LANG_COLORS[lang] || LANG_COLORS.Default;
   }
 
+  const LANGUAGE_ALIASES = {
+    "JavaScript": "JavaScript",
+    "TypeScript": "TypeScript",
+    "Python": "Python",
+    "C++": "C++",
+    "C": "C",
+    "Rust": "Rust",
+    "Go": "Go",
+    "Java": "Java",
+    "Kotlin": "Kotlin",
+    "Swift": "Swift",
+    "HTML": "HTML",
+    "CSS": "CSS",
+    "SCSS": "SCSS",
+    "Vue": "Vue",
+    "Svelte": "Svelte",
+    "Ruby": "Ruby",
+    "PHP": "PHP",
+    "Shell": "Shell",
+    "Dart": "Dart"
+  };
+
   // ── DOM helpers ──────────────────────────────────────
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
@@ -46,6 +68,28 @@
     if (el) el.setAttribute(attr, value);
   }
 
+  function escapeHtml(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+  }
+
+  function capitalizeLabel(value) {
+    return value
+      .split(/[-_\s]+/)
+      .filter(Boolean)
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(" ");
+  }
+
+  function getContributionChartUrl(login) {
+    // ghchart serves an SVG that is safe to embed directly in <img>.
+    return `https://ghchart.rshah.org/${encodeURIComponent(login)}`;
+  }
+
   // ── Fetch GitHub User ────────────────────────────────
   async function fetchUser() {
     try {
@@ -62,19 +106,22 @@
 
   function populateUser(user) {
     const name = user.name || user.login;
-    const bio = user.bio || "";
+    const bio = user.bio || "Software engineer building useful things.";
     const location = user.location || "";
     const company = user.company || "";
     const blog = user.blog || "";
+    const profileUrl = `https://github.com/${user.login}`;
+    const contactEmail = user.email || `${user.login}@users.noreply.github.com`;
 
     // Hero left
     setHTML(".hero-name", formatName(name));
-    set(".hero-bio", bio || "Software engineer. Building things.");
+    set("#hero-title-text", bio);
+    set(".hero-bio", bio);
 
     // Hero stats
-    set(".stat-repos .stat-value", user.public_repos ?? "—");
-    set(".stat-followers .stat-value", formatNum(user.followers) ?? "—");
-    set(".stat-following .stat-value", user.following ?? "—");
+    set(".stat-repos .stat-value", user.public_repos ?? "0");
+    set(".stat-followers .stat-value", formatNum(user.followers));
+    set(".stat-following .stat-value", user.following ?? "0");
 
     // Hero card
     const avatar = $(".avatar-wrap img");
@@ -85,13 +132,16 @@
     set(".hero-card-name", name);
     set(".hero-card-handle", `@${user.login}`);
 
-    if (location) set(".hero-card-location", `📍 ${location}`);
+    setHTML(
+      ".hero-card-location",
+      `<ion-icon name="location-outline" aria-hidden="true"></ion-icon> ${escapeHtml(location || "No location on GitHub")}`
+    );
 
     // Mailto
     const emailLink = $(".contact-email-link");
-    if (emailLink && user.email) {
-      emailLink.href = `mailto:${user.email}`;
-      emailLink.querySelector(".email-text").textContent = user.email;
+    if (emailLink) {
+      emailLink.href = `mailto:${contactEmail}`;
+      emailLink.querySelector(".email-text").textContent = contactEmail;
     }
 
     // Panel rows (About section)
@@ -102,13 +152,39 @@
     set(".panel-val-repos", user.public_repos ?? "—");
     set(".panel-val-gists", user.public_gists ?? "—");
 
+    // GitHub-derived skills
+    populateSkillTags([]);
+
+    // Actual counters for animated stat cards
+    updateCounter(".stat-val-repos", user.public_repos || 0);
+    updateCounter(".stat-val-followers", user.followers || 0);
+    updateCounter(".stat-val-following", user.following || 0);
+
     // Footer
     set(".footer-name", name);
+    setAttr("#social-github", "href", profileUrl);
+    setAttr("#footer-github", "href", profileUrl);
+    setAttr("#all-repos-link", "href", `${profileUrl}?tab=repositories`);
 
     // Stats section
-    set(".stat-val-repos", user.public_repos ?? "—");
+    set(".stat-val-repos", user.public_repos ?? 0);
     set(".stat-val-followers", formatNum(user.followers));
-    set(".stat-val-following", user.following ?? "—");
+    set(".stat-val-following", user.following ?? 0);
+
+    // Contributions chart from GitHub
+    const contributionChart = $("#contribution-chart");
+    if (contributionChart) {
+      contributionChart.src = getContributionChartUrl(user.login || USERNAME);
+      contributionChart.alt = `${name} contributions graph`;
+    }
+  }
+
+  function updateCounter(selector, target) {
+    const el = $(selector);
+    if (!el) return;
+    el.dataset.target = String(target);
+    el.dataset.loaded = "true";
+    el.textContent = String(target);
   }
 
   function formatName(name) {
@@ -124,6 +200,36 @@
     return String(n);
   }
 
+  function populateSkillTags(repos) {
+    const skills = new Set();
+
+    repos.forEach((repo) => {
+      if (repo.language) {
+        const label = LANGUAGE_ALIASES[repo.language] || repo.language;
+        skills.add(label);
+      }
+
+      if (Array.isArray(repo.topics)) {
+        repo.topics.forEach((topic) => {
+          if (topic) skills.add(capitalizeLabel(topic));
+        });
+      }
+    });
+
+    const fallbackSkills = ["Git", "REST APIs", "Testing", "Deployment"];
+    if (!skills.size) {
+      fallbackSkills.forEach((skill) => skills.add(skill));
+    }
+
+    const skillContainer = $("#skills-tags");
+    if (!skillContainer) return;
+
+    skillContainer.innerHTML = [...skills]
+      .slice(0, 10)
+      .map((skill) => `<span class="skill-tag">${escapeHtml(skill)}</span>`)
+      .join("");
+  }
+
   // ── Fetch Repos ──────────────────────────────────────
   async function fetchRepos() {
     const grid = $(".projects-grid");
@@ -131,13 +237,16 @@
 
     try {
       const res = await fetch(REPOS_API, {
-        headers: { Accept: "application/vnd.github.v3+json" },
+        headers: { Accept: "application/vnd.github.mercy-preview+json" },
       });
       if (!res.ok) throw new Error("Repos API error");
       const repos = await res.json();
       renderRepos(repos, grid);
       buildLangChart(repos);
-      set(".stat-val-stars", countTotalStars(repos));
+      updateCounter(".stat-val-stars", countTotalStars(repos));
+
+      const currentRepos = repos.filter((r) => !r.fork && !r.private);
+      populateSkillTags(currentRepos);
     } catch (err) {
       console.warn("Could not load repos:", err.message);
       grid.innerHTML = `<p class="error-msg">Couldn't load repositories.</p>`;
@@ -145,9 +254,9 @@
   }
 
   const REPO_ICONS = {
-    JavaScript: "⚡", TypeScript: "🔷", Python: "🐍", "C++": "⚙️",
-    Rust: "🦀", Go: "🔵", Java: "☕", HTML: "🌐", CSS: "🎨",
-    Default: "📦",
+    JavaScript: "code-slash-outline", TypeScript: "layers-outline", Python: "terminal-outline", "C++": "construct-outline",
+    Rust: "cube-outline", Go: "git-branch-outline", Java: "flame-outline", HTML: "globe-outline", CSS: "color-palette-outline",
+    Default: "folder-open-outline",
   };
 
   function renderRepos(repos, grid) {
@@ -171,10 +280,10 @@
         return `
         <article class="project-card reveal" tabindex="0" aria-label="${r.name}">
           <div class="project-card-top">
-            <div class="project-icon">${icon}</div>
+            <div class="project-icon"><ion-icon name="${icon}" aria-hidden="true"></ion-icon></div>
             <div class="project-links">
               <a href="${r.html_url}" target="_blank" rel="noopener" class="project-link" aria-label="View source">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
                 source
               </a>
               ${r.homepage ? `<a href="${r.homepage}" target="_blank" rel="noopener" class="project-link" aria-label="Live demo">↗ demo</a>` : ""}
@@ -191,11 +300,11 @@
             </span>
             <div class="project-meta">
               <span class="project-stat" title="Stars">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" opacity=".5"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>
+                <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
                 ${r.stargazers_count}
               </span>
               <span class="project-stat" title="Forks">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" opacity=".5"><path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+                <ion-icon name="git-branch-outline" aria-hidden="true"></ion-icon>
                 ${r.forks_count}
               </span>
             </div>
@@ -257,15 +366,10 @@
 
   // ── Contribution Grid ─────────────────────────────────
   function buildContributionGrid() {
-    const grid = $(".contribution-grid");
-    if (!grid) return;
-    const cells = 52 * 5; // ~1 year of weeks × 5 days
-    const html = Array.from({ length: cells }, () => {
-      const r = Math.random();
-      const level = r > 0.85 ? 4 : r > 0.7 ? 3 : r > 0.5 ? 2 : r > 0.35 ? 1 : 0;
-      return `<div class="contribution-cell" data-level="${level}"></div>`;
-    }).join("");
-    grid.innerHTML = html;
+    const chart = $("#contribution-chart");
+    if (!chart) return;
+    chart.src = getContributionChartUrl(USERNAME);
+    chart.alt = `${USERNAME} contributions graph`;
   }
 
   // ── Scroll Reveal ─────────────────────────────────────
@@ -317,31 +421,10 @@
     });
   }
 
-  // ── Contact Form ──────────────────────────────────────
-  function initContactForm() {
-    const form = $(".contact-form");
-    if (!form) return;
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const btn = form.querySelector(".btn-primary");
-      btn.textContent = "Sent ✓";
-      btn.disabled = true;
-      btn.style.background = "var(--green)";
-      btn.style.borderColor = "var(--green)";
-      btn.style.color = "#000";
-      setTimeout(() => {
-        btn.textContent = "Send message";
-        btn.disabled = false;
-        btn.style = "";
-        form.reset();
-      }, 3000);
-    });
-  }
-
   // ── Counter animation ─────────────────────────────────
   function animateCounters() {
     $$(".stat-card-value[data-target]").forEach((el) => {
+      if (el.dataset.loaded === "true") return;
       const target = parseInt(el.dataset.target, 10);
       let current = 0;
       const step = Math.ceil(target / 40);
@@ -356,7 +439,6 @@
   // ── Init ──────────────────────────────────────────────
   document.addEventListener("DOMContentLoaded", () => {
     initNav();
-    initContactForm();
     buildContributionGrid();
     observeReveal();
 

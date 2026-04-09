@@ -9,6 +9,8 @@
   <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script type="module" src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
 
@@ -44,13 +46,10 @@
         <h1 class="hero-name">Developer<br><span class="hl">Engineer</span></h1>
 
         <p class="hero-title">
-          <span id="hero-title-text">// loading profile...</span>
+          <span id="hero-title-text">// loading profile bio...</span>
         </p>
 
-        <p class="hero-bio">
-          Building fast, reliable software. Open to embedded systems,
-          firmware, and full-stack projects.
-        </p>
+
 
         <div class="hero-stats">
           <div class="stat-item stat-repos">
@@ -71,9 +70,7 @@
           <a href="#projects" class="btn btn-primary">View projects</a>
           <a href="#contact" class="btn btn-outline">Get in touch</a>
           <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn-outline">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
+            <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
             GitHub
           </a>
         </div>
@@ -93,14 +90,9 @@
 
         <span class="hero-card-name">Developer</span>
         <span class="hero-card-handle">@username</span>
-        <span class="hero-card-location">📍 Somewhere</span>
+        <span class="hero-card-location"><ion-icon name="location-outline" aria-hidden="true"></ion-icon> Somewhere</span>
 
-        <div class="hero-card-badges">
-          <span class="badge accent">C++</span>
-          <span class="badge green">Open Source</span>
-          <span class="badge">Embedded</span>
-          <span class="badge">Web</span>
-        </div>
+        
 
         <div class="hero-card-divider"></div>
 
@@ -137,14 +129,10 @@
         <!-- Bio text -->
         <div class="about-text reveal">
           <p>
-            I'm a software engineer with a focus on embedded systems and firmware
-            development. I write clean, performant C++ and enjoy working close to the
-            hardware — memory management, real-time constraints, low-level I/O.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto eaque exercitationem doloremque ipsa culpa fuga sed harum obcaecati possimus fugiat beatae non, quasi atque placeat facilis consequatur a optio libero!
           </p>
           <p>
-            Alongside systems work I build frontend interfaces for freelance clients —
-            fast, accessible, production-ready. I'm currently studying Software Engineering
-            and building open-source tools in my spare time.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga quos expedita distinctio ab similique aut illo pariatur molestias exercitationem in quae, quibusdam impedit velit doloremque, excepturi fugiat rem at consequuntur assumenda! Nihil molestiae unde tempora.
           </p>
 
           <div class="skills-block" style="margin-top:28px">
@@ -152,13 +140,10 @@
             <div class="skills-tags" id="skills-tags">
               <!-- Populated by JS or static fallback -->
               <span class="skill-tag">C++</span>
-              <span class="skill-tag">C</span>
               <span class="skill-tag">JavaScript</span>
               <span class="skill-tag">HTML/CSS</span>
               <span class="skill-tag">Java</span>
               <span class="skill-tag">Git</span>
-              <span class="skill-tag">Linux</span>
-              <span class="skill-tag">CMake</span>
             </div>
           </div>
         </div>
@@ -199,11 +184,10 @@
             </div>
           </div>
 
-          <!-- Contribution placeholder grid -->
           <div style="padding: 0 20px 20px">
             <div class="contribution-section">
               <p class="contribution-label">contributions — past year</p>
-              <div class="contribution-grid" aria-hidden="true"></div>
+              <img class="contribution-chart" id="contribution-chart" alt="GitHub contributions graph" />
             </div>
           </div>
         </div>
@@ -276,22 +260,22 @@
       <!-- Stat cards -->
       <div class="stats-grid">
         <div class="stat-card reveal">
-          <div class="stat-card-icon">📦</div>
+              <ion-icon class="stat-card-icon" name="folder-open-outline" aria-hidden="true"></ion-icon>
           <div class="stat-card-value stat-val-repos" data-target="0">—</div>
           <div class="stat-card-label">repositories</div>
         </div>
         <div class="stat-card reveal">
-          <div class="stat-card-icon">⭐</div>
+          <ion-icon class="stat-card-icon" name="star-outline" aria-hidden="true"></ion-icon>
           <div class="stat-card-value stat-val-stars" data-target="0">—</div>
           <div class="stat-card-label">total stars</div>
         </div>
         <div class="stat-card reveal">
-          <div class="stat-card-icon">👥</div>
+          <ion-icon class="stat-card-icon" name="people-outline" aria-hidden="true"></ion-icon>
           <div class="stat-card-value stat-val-followers" data-target="0">—</div>
           <div class="stat-card-label">followers</div>
         </div>
         <div class="stat-card reveal">
-          <div class="stat-card-icon">👣</div>
+          <ion-icon class="stat-card-icon" name="person-add-outline" aria-hidden="true"></ion-icon>
           <div class="stat-card-value stat-val-following" data-target="0">—</div>
           <div class="stat-card-label">following</div>
         </div>
@@ -329,7 +313,7 @@
 
           <a href="mailto:hello@example.com" class="contact-email-link">
             <span class="email-text">hello@example.com</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
           </a>
 
           <div class="contact-socials">
@@ -340,65 +324,18 @@
               class="social-link"
               id="social-github"
             >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
               GitHub
             </a>
             <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <ion-icon name="logo-linkedin" aria-hidden="true"></ion-icon>
               LinkedIn
             </a>
             <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <ion-icon name="logo-twitter" aria-hidden="true"></ion-icon>
               Twitter
             </a>
           </div>
-        </div>
-
-        <!-- Right — contact form -->
-        <div class="contact-panel reveal">
-          <div class="contact-panel-header">
-            <span class="contact-panel-title">send_message.sh</span>
-          </div>
-
-          <form class="contact-form" novalidate>
-            <div class="form-group">
-              <label class="form-label" for="contact-name">name</label>
-              <input
-                type="text"
-                id="contact-name"
-                class="form-input"
-                placeholder="Your name"
-                required
-                autocomplete="name"
-              />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="contact-email">email</label>
-              <input
-                type="email"
-                id="contact-email"
-                class="form-input"
-                placeholder="you@example.com"
-                required
-                autocomplete="email"
-              />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="contact-message">message</label>
-              <textarea
-                id="contact-message"
-                class="form-textarea"
-                placeholder="What are you working on?"
-                required
-              ></textarea>
-            </div>
-
-            <div class="form-submit-row">
-              <button type="submit" class="btn btn-primary">Send message</button>
-            </div>
-          </form>
         </div>
       </div>
     </div>

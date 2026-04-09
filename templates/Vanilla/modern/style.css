@@ -711,6 +711,19 @@ section {
   color: var(--text-3);
 }
 
+ion-icon {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.contribution-chart {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-3);
+}
+
 /* ── Loading skeleton ── */
 .skeleton-card {
   background: var(--bg);
@@ -843,7 +856,7 @@ section {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 1fr;
   gap: 60px;
   align-items: start;
 }
