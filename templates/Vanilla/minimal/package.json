@@ -7,11 +7,7 @@
     "dev": "npx live-server --port=5173 --open=index.html",
     "start": "npx live-server --port=5173 --open=index.html"
   },
-  "keywords": [
-    "portfolio",
-    "github",
-    "developer"
-  ],
+  "keywords": ["portfolio", "github", "developer"],
   "author": "",
   "license": "MIT"
 }
