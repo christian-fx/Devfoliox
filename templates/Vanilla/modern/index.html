@@ -3,114 +3,428 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Developer</title>
+  <meta name="description" content="Portfolio — Software Engineer" />
+  <title>Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <a href="#" class="nav__logo" id="navName">dev</a>
-    <ul class="nav__links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <nav role="navigation" aria-label="Main navigation">
+    <span class="nav-logo">dev<span>.</span></span>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#stats">stats</a></li>
+      <li><a href="#contact">contact</a></li>
     </ul>
-    <button class="nav__burger" id="burger" aria-label="Toggle menu">
+
+    <button class="nav-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about"    class="mobile-link">About</a>
-    <a href="#projects" class="mobile-link">Projects</a>
-    <a href="#contact"  class="mobile-link">Contact</a>
-  </div>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero__grid" aria-hidden="true"></div>
-    <div class="hero__content">
-      <p class="hero__eyebrow">
-        <span class="dot"></span>
-        <span id="heroEyebrow">Available for work</span>
-      </p>
-      <h1 class="hero__name" id="heroName">Your Name</h1>
-      <p class="hero__role" id="heroRole">Software Developer</p>
-      <p class="hero__bio" id="heroBio">
-        I build clean, thoughtful software — from systems-level code to web interfaces.
-      </p>
-      <div class="hero__ctas">
-        <a href="#projects" class="btn">View Work</a>
-        <a href="#contact"  class="btn btn--outline">Say Hello</a>
-      </div>
-    </div>
-  </section>
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section id="hero" aria-label="Introduction">
+    <div class="hero-inner">
 
-  <!-- ABOUT -->
-  <section class="about section" id="about">
-    <div class="container">
-      <span class="section-label">About</span>
-      <div class="about__grid">
-        <div class="about__photo-wrap">
-          <img id="aboutAvatar" src="" alt="Profile photo" class="about__photo" />
+      <!-- Left column -->
+      <div class="hero-content">
+        <span class="hero-tag">available for work</span>
+
+        <h1 class="hero-name">Developer<br><span class="hl">Engineer</span></h1>
+
+        <p class="hero-title">
+          <span id="hero-title-text">// loading profile...</span>
+        </p>
+
+        <p class="hero-bio">
+          Building fast, reliable software. Open to embedded systems,
+          firmware, and full-stack projects.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item stat-repos">
+            <span class="stat-value">—</span>
+            <span class="stat-label">repositories</span>
+          </div>
+          <div class="stat-item stat-followers">
+            <span class="stat-value">—</span>
+            <span class="stat-label">followers</span>
+          </div>
+          <div class="stat-item stat-following">
+            <span class="stat-value">—</span>
+            <span class="stat-label">following</span>
+          </div>
         </div>
-        <div class="about__text">
-          <h2 class="section-title">Who I Am</h2>
-          <!--get about from user bio-->
-          <p class="about__bio" id="aboutBio">—</p>
-          <ul class="about__facts" id="aboutFacts">
-            <li><span>Location</span> <strong id="metaLocation">—</strong></li>
-            <li><span>Repos</span>    <strong id="metaRepos">—</strong></li>
-            <li><span>Followers</span><strong id="metaFollowers">—</strong></li>
-            <li><span>Member since</span><strong id="metaJoined">—</strong></li>
-          </ul>
-          <div class="about__socials" id="aboutSocials"></div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+          <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn-outline">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Right column — Avatar card -->
+      <aside class="hero-card" aria-label="Profile card">
+        <div class="avatar-wrap">
+          <img
+            src="https://avatars.githubusercontent.com/u/0"
+            alt="Profile avatar"
+            loading="lazy"
+            width="100"
+            height="100"
+          />
+        </div>
+
+        <span class="hero-card-name">Developer</span>
+        <span class="hero-card-handle">@username</span>
+        <span class="hero-card-location">📍 Somewhere</span>
+
+        <div class="hero-card-badges">
+          <span class="badge accent">C++</span>
+          <span class="badge green">Open Source</span>
+          <span class="badge">Embedded</span>
+          <span class="badge">Web</span>
+        </div>
+
+        <div class="hero-card-divider"></div>
+
+        <div class="card-meta-row">
+          <span>public repos</span>
+          <strong class="stat-repos-val">—</strong>
+        </div>
+        <div class="card-meta-row">
+          <span>followers</span>
+          <strong class="stat-followers-val">—</strong>
+        </div>
+        <div class="card-meta-row">
+          <span>following</span>
+          <strong class="stat-following-val">—</strong>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
+  <section id="about" aria-label="About me">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title">About</h2>
+        <span class="section-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="about-grid">
+        <!-- Bio text -->
+        <div class="about-text reveal">
+          <p>
+            I'm a software engineer with a focus on embedded systems and firmware
+            development. I write clean, performant C++ and enjoy working close to the
+            hardware — memory management, real-time constraints, low-level I/O.
+          </p>
+          <p>
+            Alongside systems work I build frontend interfaces for freelance clients —
+            fast, accessible, production-ready. I'm currently studying Software Engineering
+            and building open-source tools in my spare time.
+          </p>
+
+          <div class="skills-block" style="margin-top:28px">
+            <p class="skills-title">languages &amp; tools</p>
+            <div class="skills-tags" id="skills-tags">
+              <!-- Populated by JS or static fallback -->
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">HTML/CSS</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">Linux</span>
+              <span class="skill-tag">CMake</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile panel -->
+        <div class="about-panel reveal">
+          <div class="panel-header">
+            <div class="panel-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="panel-header-label">github_profile.json</span>
+          </div>
+
+          <div class="panel-body">
+            <div class="panel-row">
+              <span class="panel-key">username</span>
+              <span class="panel-val accent panel-val-username">@username</span>
+            </div>
+            <div class="panel-row">
+              <span class="panel-key">company</span>
+              <span class="panel-val panel-val-company">—</span>
+            </div>
+            <div class="panel-row">
+              <span class="panel-key">location</span>
+              <span class="panel-val panel-val-location">—</span>
+            </div>
+            <div class="panel-row">
+              <span class="panel-key">website</span>
+              <span class="panel-val accent panel-val-website">—</span>
+            </div>
+            <div class="panel-row">
+              <span class="panel-key">public_repos</span>
+              <span class="panel-val green panel-val-repos">—</span>
+            </div>
+            <div class="panel-row">
+              <span class="panel-key">public_gists</span>
+              <span class="panel-val panel-val-gists">—</span>
+            </div>
+          </div>
+
+          <!-- Contribution placeholder grid -->
+          <div style="padding: 0 20px 20px">
+            <div class="contribution-section">
+              <p class="contribution-label">contributions — past year</p>
+              <div class="contribution-grid" aria-hidden="true"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section class="projects section" id="projects">
-    <div class="container">
-      <span class="section-label">Projects</span>
-      <h2 class="section-title">Selected Work</h2>
-      <div class="projects__grid" id="projectsGrid">
-        <div class="project-card skeleton"></div>
-        <div class="project-card skeleton"></div>
-        <div class="project-card skeleton"></div>
+
+  <!-- ═══════════════════════════════════════
+       PROJECTS
+  ═══════════════════════════════════════ -->
+  <section id="projects" aria-label="Projects">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Projects</h2>
+        <span class="section-line" aria-hidden="true"></span>
       </div>
-      <div class="projects__more">
-        <a id="allReposLink" href="#" class="btn btn--outline" target="_blank" rel="noopener">All repos ↗</a>
+
+      <!-- Skeleton loaders shown before API data arrives -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Skeletons -->
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="skeleton sk-title"></div>
+          <div class="skeleton sk-line"></div>
+          <div class="skeleton sk-line short"></div>
+          <div class="skeleton sk-line shorter"></div>
+          <div class="skeleton sk-lang"></div>
+        </div>
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="skeleton sk-title"></div>
+          <div class="skeleton sk-line"></div>
+          <div class="skeleton sk-line short"></div>
+          <div class="skeleton sk-lang"></div>
+        </div>
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="skeleton sk-title"></div>
+          <div class="skeleton sk-line"></div>
+          <div class="skeleton sk-line shorter"></div>
+          <div class="skeleton sk-lang"></div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:40px" class="reveal">
+        <a
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-outline"
+          id="all-repos-link"
+        >
+          View all repositories →
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="contact section" id="contact">
-    <div class="container">
-      <div class="contact__inner">
-        <span class="section-label">Contact</span>
-        <h2 class="contact__title">Let's talk.</h2>
-        <a id="contactEmail" href="mailto:you@email.com" class="contact__email">you@email.com</a>
-        <div class="contact__socials" id="contactSocials"></div>
+
+  <!-- ═══════════════════════════════════════
+       GITHUB STATS
+  ═══════════════════════════════════════ -->
+  <section id="stats" aria-label="GitHub statistics">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Stats</h2>
+        <span class="section-line" aria-hidden="true"></span>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-card-icon">📦</div>
+          <div class="stat-card-value stat-val-repos" data-target="0">—</div>
+          <div class="stat-card-label">repositories</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card-icon">⭐</div>
+          <div class="stat-card-value stat-val-stars" data-target="0">—</div>
+          <div class="stat-card-label">total stars</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card-icon">👥</div>
+          <div class="stat-card-value stat-val-followers" data-target="0">—</div>
+          <div class="stat-card-label">followers</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-card-icon">👣</div>
+          <div class="stat-card-value stat-val-following" data-target="0">—</div>
+          <div class="stat-card-label">following</div>
+        </div>
+      </div>
+
+      <!-- Language breakdown -->
+      <div class="lang-section reveal">
+        <p class="lang-section-title">top languages by repository count</p>
+        <div class="lang-bar" aria-hidden="true"></div>
+        <div class="lang-list"></div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <span id="footerName">dev</span> · Built with Devfolio · <span id="footerYear"></span>
+
+  <!-- ═══════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════ -->
+  <section id="contact" aria-label="Contact">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Contact</h2>
+        <span class="section-line" aria-hidden="true"></span>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Left -->
+        <div class="reveal">
+          <p class="contact-text">
+            Open to freelance projects, collaborations, and full-time roles.
+            Whether it's embedded systems, firmware, or frontend work — let's
+            build something together.
+          </p>
+
+          <a href="mailto:hello@example.com" class="contact-email-link">
+            <span class="email-text">hello@example.com</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+
+          <div class="contact-socials">
+            <a
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+              id="social-github"
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              GitHub
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener" class="social-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Twitter
+            </a>
+          </div>
+        </div>
+
+        <!-- Right — contact form -->
+        <div class="contact-panel reveal">
+          <div class="contact-panel-header">
+            <span class="contact-panel-title">send_message.sh</span>
+          </div>
+
+          <form class="contact-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="contact-name">name</label>
+              <input
+                type="text"
+                id="contact-name"
+                class="form-input"
+                placeholder="Your name"
+                required
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">email</label>
+              <input
+                type="email"
+                id="contact-email"
+                class="form-input"
+                placeholder="you@example.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-message">message</label>
+              <textarea
+                id="contact-message"
+                class="form-textarea"
+                placeholder="What are you working on?"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <span class="footer-left">
+      Designed &amp; built by <strong class="footer-name">Developer</strong> · <span id="footer-year"></span>
+    </span>
+    <div class="footer-right">
+      <a href="#hero" class="footer-link">↑ back to top</a>
+      <a href="https://github.com/" target="_blank" rel="noopener" class="footer-link" id="footer-github">source</a>
     </div>
   </footer>
 
+
+  <!-- Scripts -->
   <script src="js/config.js"></script>
   <script src="script.js"></script>
+  <script>
+    // Footer year
+    document.getElementById("footer-year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
