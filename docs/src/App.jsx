@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import DocLayout from './components/docs/DocLayout';
 import DocPage from './pages/DocPage';
 import Templates from './pages/Templates';
+import TemplateDetails from './pages/TemplateDetails';
 import Showcase from './pages/Showcase';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/templates" element={<Templates />} />
+      <Route path="/templates/:id" element={<TemplateDetails />} />
       <Route path="/showcase" element={<Showcase />} />
       <Route path="/documentation" element={<DocLayout />}>
         <Route index element={<Navigate to="/documentation/introduction" replace />} />
