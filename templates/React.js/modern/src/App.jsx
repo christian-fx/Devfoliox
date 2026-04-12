@@ -3,6 +3,19 @@ import { getGitHubData } from "./services/github";
 import { motion, AnimatePresence } from "framer-motion";
 import { GITHUB_USERNAME } from "./config";
 
+/* ─── Mobile hook ─── */
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return isMobile;
+}
+
 /* ─── SVG Icons ─── */
 const IconGithub = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -58,7 +71,6 @@ const IconExternalLink = ({ size = 14 }) => (
 /* ─── Helpers ─── */
 const getUniqueLanguages = (repos) =>
   [...new Set(repos.map((r) => r.language).filter(Boolean))];
-
 const getTotalStars = (repos) =>
   repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
 
@@ -79,18 +91,18 @@ const fadeIn = {
 };
 
 /* ─── Skeleton ─── */
-function SkeletonLoader() {
+function SkeletonLoader({ isMobile }) {
   return (
-    <div style={{ background: "#0d0d0d", minHeight: "100vh", padding: "120px 24px 0" }}>
+    <div style={{ background: "#0d0d0d", minHeight: "100vh", padding: isMobile ? "100px 20px 0" : "120px 24px 0" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
-        <div className="skeleton" style={{ width: 80, height: 80, borderRadius: "50%", marginBottom: 32 }} />
-        <div className="skeleton" style={{ width: 340, height: 48, marginBottom: 16 }} />
-        <div className="skeleton" style={{ width: 260, height: 20, marginBottom: 40 }} />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}>
-          {[1,2,3,4].map(i => <div key={i} className="skeleton" style={{ height: 100 }} />)}
+        <div className="skeleton" style={{ width: 72, height: 72, borderRadius: "50%", marginBottom: 28 }} />
+        <div className="skeleton" style={{ width: isMobile ? "80%" : 340, height: isMobile ? 36 : 48, marginBottom: 16 }} />
+        <div className="skeleton" style={{ width: isMobile ? "60%" : 260, height: 20, marginBottom: 40 }} />
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(4, 1fr)", gap: 12, marginBottom: 32 }}>
+          {[1, 2, 3, 4].map(i => <div key={i} className="skeleton" style={{ height: 90 }} />)}
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-          {[1,2,3,4].map(i => <div key={i} className="skeleton" style={{ height: 200 }} />)}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 12 }}>
+          {[1, 2, 3].map(i => <div key={i} className="skeleton" style={{ height: 160 }} />)}
         </div>
       </div>
     </div>
@@ -100,7 +112,7 @@ function SkeletonLoader() {
 /* ─── Error State ─── */
 function ErrorState({ message }) {
   return (
-    <div style={{ background: "#0d0d0d", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ background: "#0d0d0d", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 20px" }}>
       <div style={{ textAlign: "center", color: "#a0a0a0", fontFamily: "JetBrains Mono, monospace" }}>
         <div style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 12, color: "#e8ff59" }}>Error</div>
         <div style={{ fontSize: 14 }}>{message}</div>
@@ -116,6 +128,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [activeFilter, setActiveFilter] = useState("All");
   const [scrolled, setScrolled] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -140,7 +153,7 @@ export default function App() {
     })();
   }, []);
 
-  if (loading) return <SkeletonLoader />;
+  if (loading) return <SkeletonLoader isMobile={isMobile} />;
   if (error) return <ErrorState message={error} />;
 
   const { profile, repos } = userData;
@@ -149,9 +162,12 @@ export default function App() {
   const filteredRepos =
     activeFilter === "All" ? repos : repos.filter((r) => r.language === activeFilter);
 
-  /* Marquee text for the scrolling banner */
   const techItems = languages.length ? languages : ["JavaScript", "React", "TypeScript", "CSS", "HTML", "Node.js"];
   const marqueeItems = [...techItems, ...techItems, ...techItems, ...techItems];
+
+  /* Responsive values */
+  const px = isMobile ? "0 20px" : "0 32px"; // main x-padding
+  const sectionMb = isMobile ? 64 : 100;
 
   return (
     <div style={{ background: "#0d0d0d", minHeight: "100vh", fontFamily: "Space Grotesk, sans-serif" }}>
@@ -164,96 +180,142 @@ export default function App() {
         style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
           borderBottom: scrolled ? "1px solid #2a2a2a" : "1px solid transparent",
-          background: scrolled ? "rgba(13,13,13,0.9)" : "transparent",
+          background: scrolled ? "rgba(13,13,13,0.92)" : "transparent",
           backdropFilter: scrolled ? "blur(12px)" : "none",
           transition: "all 0.3s ease",
         }}
       >
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{
+          maxWidth: 1100, margin: "0 auto",
+          padding: isMobile ? "0 20px" : "0 32px",
+          height: 60, display: "flex", alignItems: "center", justifyContent: "space-between",
+        }}>
           {/* Logo */}
-          <a href="#" style={{ fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: 18, color: "#f5f5f5", textDecoration: "none", letterSpacing: "-0.02em" }}>
+          <a href="#" style={{ fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: isMobile ? 16 : 18, color: "#f5f5f5", textDecoration: "none", letterSpacing: "-0.02em" }}>
             {profile.login}<span style={{ color: "#e8ff59" }}>.</span>
           </a>
 
-          {/* Links */}
-          <nav style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            <div style={{ display: "flex", gap: 28 }}>
-              {["About", "Projects", "Contact"].map(link => (
-                <a key={link} href={`#${link.toLowerCase()}`} className="nav-link">{link}</a>
-              ))}
-            </div>
-            <a href={profile.html_url} target="_blank" rel="noreferrer"
-              style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", borderRadius: 8, border: "1px solid #2a2a2a", background: "#141414", color: "#f5f5f5", textDecoration: "none", fontSize: 13, fontWeight: 500, transition: "all 0.2s" }}
+          {/* Nav — on mobile: only show github button */}
+          <nav style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 32 }}>
+            {!isMobile && (
+              <div style={{ display: "flex", gap: 28 }}>
+                {["About", "Projects", "Contact"].map(link => (
+                  <a key={link} href={`#${link.toLowerCase()}`} className="nav-link">{link}</a>
+                ))}
+              </div>
+            )}
+            <a
+              href={profile.html_url}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: "flex", alignItems: "center", gap: 6,
+                padding: isMobile ? "7px 12px" : "8px 16px",
+                borderRadius: 8, border: "1px solid #2a2a2a", background: "#141414",
+                color: "#f5f5f5", textDecoration: "none",
+                fontSize: isMobile ? 12 : 13, fontWeight: 500, transition: "all 0.2s",
+              }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = "#3a3a3a"; e.currentTarget.style.background = "#1a1a1a"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = "#2a2a2a"; e.currentTarget.style.background = "#141414"; }}
             >
-              <IconGithub size={15} /> GitHub
+              <IconGithub size={14} />
+              {!isMobile && "GitHub"}
             </a>
           </nav>
         </div>
       </motion.header>
 
-      <main style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px" }}>
+      <main style={{ maxWidth: 1100, margin: "0 auto", padding: px }}>
 
         {/* ─── HERO ─── */}
-        <section style={{ paddingTop: 160, paddingBottom: 100 }}>
+        <section style={{ paddingTop: isMobile ? 100 : 160, paddingBottom: isMobile ? 60 : 100 }}>
+
+          {/* Availability badge */}
           <motion.div custom={0} variants={fadeIn} initial="hidden" animate="visible">
-            {/* Availability badge */}
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 999, border: "1px solid #2a2a2a", background: "#141414", marginBottom: 40 }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              padding: "6px 14px", borderRadius: 999,
+              border: "1px solid #2a2a2a", background: "#141414", marginBottom: 32,
+            }}>
               <span className="pulse-dot" style={{ width: 7, height: 7, borderRadius: "50%", background: "#4ade80", display: "block" }} />
-              <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: "#a0a0a0" }}>Available for work</span>
+              <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.1em", color: "#a0a0a0" }}>
+                Available for work
+              </span>
             </div>
           </motion.div>
 
-          {/* Name + Avatar row */}
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 40, flexWrap: "wrap", marginBottom: 32 }}>
-            <div style={{ flex: 1, minWidth: 280 }}>
+          {/* Avatar + Name */}
+          <div style={{
+            display: "flex",
+            flexDirection: isMobile ? "column-reverse" : "row",
+            alignItems: isMobile ? "flex-start" : "flex-start",
+            justifyContent: "space-between",
+            gap: isMobile ? 20 : 40,
+            marginBottom: isMobile ? 24 : 32,
+          }}>
+            <div style={{ flex: 1 }}>
               <motion.h1
                 custom={1} variants={fadeUp} initial="hidden" animate="visible"
-                style={{ fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: "clamp(48px, 7vw, 88px)", lineHeight: 0.95, letterSpacing: "-0.04em", color: "#f5f5f5", marginBottom: 0 }}
+                style={{
+                  fontFamily: "Syne, sans-serif", fontWeight: 800,
+                  fontSize: isMobile ? "clamp(42px, 11vw, 60px)" : "clamp(56px, 7vw, 88px)",
+                  lineHeight: 0.95, letterSpacing: "-0.04em", color: "#f5f5f5",
+                }}
               >
                 {profile.name || profile.login}
               </motion.h1>
             </div>
 
             {/* Avatar */}
-            <motion.div custom={2} variants={fadeIn} initial="hidden" animate="visible"
-              style={{ flexShrink: 0 }}
-            >
-              <img src={profile.avatar_url} alt={profile.login}
-                style={{ width: 100, height: 100, borderRadius: "50%", border: "2px solid #2a2a2a", objectFit: "cover" }}
+            <motion.div custom={2} variants={fadeIn} initial="hidden" animate="visible" style={{ flexShrink: 0 }}>
+              <img
+                src={profile.avatar_url}
+                alt={profile.login}
+                style={{
+                  width: isMobile ? 72 : 100,
+                  height: isMobile ? 72 : 100,
+                  borderRadius: "50%", border: "2px solid #2a2a2a", objectFit: "cover",
+                }}
               />
             </motion.div>
           </div>
 
-          {/* Bio + meta */}
+          {/* Bio + meta + CTAs */}
           <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible">
-            <p style={{ fontSize: "clamp(16px, 2.2vw, 20px)", color: "#a0a0a0", maxWidth: 560, lineHeight: 1.65, marginBottom: 20, fontWeight: 400 }}>
+            <p style={{
+              fontSize: isMobile ? 15 : "clamp(16px, 2.2vw, 20px)",
+              color: "#a0a0a0", maxWidth: 560, lineHeight: 1.65, marginBottom: 16, fontWeight: 400,
+            }}>
               {profile.bio || "Building things for the web. Open to collaborations."}
             </p>
-            {/* location / company */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 20, color: "#555", fontSize: 13, fontFamily: "JetBrains Mono, monospace", marginBottom: 40 }}>
+
+            {/* Location / company / followers */}
+            <div style={{
+              display: "flex", flexWrap: "wrap", gap: isMobile ? 12 : 20,
+              color: "#555", fontSize: 12,
+              fontFamily: "JetBrains Mono, monospace", marginBottom: isMobile ? 28 : 40,
+            }}>
               {profile.location && (
                 <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                  <IconMap /> {profile.location}
+                  <IconMap size={12} /> {profile.location}
                 </span>
               )}
               {profile.company && (
                 <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                  <IconBriefcase /> {profile.company}
+                  <IconBriefcase size={12} /> {profile.company}
                 </span>
               )}
               <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                <IconGithub size={13} /> {profile.followers} followers
+                <IconGithub size={12} /> {profile.followers} followers
               </span>
             </div>
 
             {/* CTAs */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-              <a href="#projects" className="btn-accent">
+            <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 10, width: isMobile ? "100%" : "auto" }}>
+              <a href="#projects" className="btn-accent" style={isMobile ? { justifyContent: "center" } : {}}>
                 View Projects <IconArrow size={15} />
               </a>
-              <a href={`mailto:${profile.email || "hello@portfolio.dev"}`} className="btn-ghost">
+              <a href={`mailto:${profile.email || "hello@portfolio.dev"}`} className="btn-ghost" style={isMobile ? { justifyContent: "center" } : {}}>
                 <IconMail size={15} /> Get in Touch
               </a>
             </div>
@@ -261,11 +323,18 @@ export default function App() {
         </section>
 
         {/* ─── SCROLLING MARQUEE ─── */}
-        <div style={{ borderTop: "1px solid #2a2a2a", borderBottom: "1px solid #2a2a2a", padding: "18px 0", overflow: "hidden", marginBottom: 80 }} className="marquee-wrap">
-          <div className="marquee-track" style={{ display: "flex", gap: 48, whiteSpace: "nowrap", width: "max-content" }}>
+        <div
+          style={{ borderTop: "1px solid #2a2a2a", borderBottom: "1px solid #2a2a2a", padding: "16px 0", overflow: "hidden", marginBottom: isMobile ? 56 : 80 }}
+          className="marquee-wrap"
+        >
+          <div className="marquee-track" style={{ display: "flex", gap: isMobile ? 32 : 48, whiteSpace: "nowrap", width: "max-content" }}>
             {marqueeItems.map((lang, i) => (
-              <span key={i} style={{ display: "flex", alignItems: "center", gap: 10, color: "#555", fontFamily: "JetBrains Mono, monospace", fontSize: 13, textTransform: "uppercase", letterSpacing: "0.12em" }}>
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2a2a2a", display: "inline-block" }} />
+              <span key={i} style={{
+                display: "flex", alignItems: "center", gap: 8,
+                color: "#555", fontFamily: "JetBrains Mono, monospace",
+                fontSize: isMobile ? 11 : 13, textTransform: "uppercase", letterSpacing: "0.1em",
+              }}>
+                <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#2a2a2a", display: "inline-block" }} />
                 {lang}
               </span>
             ))}
@@ -273,23 +342,34 @@ export default function App() {
         </div>
 
         {/* ─── ABOUT / STATS ─── */}
-        <section id="about" style={{ marginBottom: 100 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start", flexWrap: "wrap" }}>
-            {/* Left: About blurb */}
+        <section id="about" style={{ marginBottom: sectionMb }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+            gap: isMobile ? 40 : 48,
+            alignItems: "start",
+          }}>
+            {/* About blurb */}
             <motion.div
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.5 }}
             >
               <div className="section-label" style={{ marginBottom: 16 }}>About</div>
-              <h2 style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.5vw, 42px)", letterSpacing: "-0.03em", lineHeight: 1.15, color: "#f5f5f5", marginBottom: 20 }}>
+              <h2 style={{
+                fontFamily: "Syne, sans-serif", fontWeight: 700,
+                fontSize: isMobile ? "clamp(24px, 7vw, 34px)" : "clamp(28px, 3.5vw, 42px)",
+                letterSpacing: "-0.03em", lineHeight: 1.15, color: "#f5f5f5", marginBottom: 16,
+              }}>
                 A developer who cares about the details.
               </h2>
               <p style={{ fontSize: 15, color: "#a0a0a0", lineHeight: 1.75 }}>
-                Based on my GitHub — {profile.public_repos} public repositories, working in {languages.slice(0, 3).join(", ")}{languages.length > 3 ? " and more" : ""}. I write code that&apos;s meant to be read.
+                Based on my GitHub — {profile.public_repos} public repositories, working in{" "}
+                {languages.slice(0, 3).join(", ")}{languages.length > 3 ? " and more" : ""}.
+                I write code that&apos;s meant to be read.
               </p>
             </motion.div>
 
-            {/* Right: 4 stat cards */}
+            {/* Stat cards — 2×2 grid always */}
             <motion.div
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
@@ -301,8 +381,8 @@ export default function App() {
                 { label: "Following", value: profile.following },
                 { label: "Stars Earned", value: totalStars },
               ].map((s) => (
-                <div key={s.label} className="stat-card">
-                  <div className="stat-value">{s.value}</div>
+                <div key={s.label} className="stat-card" style={{ padding: isMobile ? "20px 16px" : "28px 24px" }}>
+                  <div className="stat-value" style={{ fontSize: isMobile ? "1.8rem" : "2.5rem" }}>{s.value}</div>
                   <div className="stat-label">{s.label}</div>
                 </div>
               ))}
@@ -311,22 +391,40 @@ export default function App() {
         </section>
 
         {/* ─── PROJECTS ─── */}
-        <section id="projects" style={{ marginBottom: 100 }}>
-          {/* Header row */}
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 36, flexWrap: "wrap", gap: 16 }}>
+        <section id="projects" style={{ marginBottom: sectionMb }}>
+          {/* Header + filters */}
+          <div style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            alignItems: isMobile ? "flex-start" : "flex-end",
+            justifyContent: "space-between",
+            marginBottom: 28, gap: 16,
+          }}>
             <div>
-              <div className="section-label" style={{ marginBottom: 12 }}>Selected Work</div>
-              <h2 style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.5vw, 42px)", letterSpacing: "-0.03em", lineHeight: 1.1, color: "#f5f5f5" }}>
+              <div className="section-label" style={{ marginBottom: 10 }}>Selected Work</div>
+              <h2 style={{
+                fontFamily: "Syne, sans-serif", fontWeight: 700,
+                fontSize: isMobile ? "clamp(26px, 7vw, 36px)" : "clamp(28px, 3.5vw, 42px)",
+                letterSpacing: "-0.03em", lineHeight: 1.1, color: "#f5f5f5",
+              }}>
                 Projects
               </h2>
             </div>
-            {/* Filter buttons */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+
+            {/* Filter buttons — scroll horizontally on mobile */}
+            <div style={{
+              display: "flex", gap: 8,
+              flexWrap: isMobile ? "nowrap" : "wrap",
+              overflowX: isMobile ? "auto" : "visible",
+              paddingBottom: isMobile ? 4 : 0,
+              maxWidth: isMobile ? "100%" : "none",
+            }}>
               {["All", ...languages].map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setActiveFilter(lang)}
                   className={`filter-btn${activeFilter === lang ? " active" : ""}`}
+                  style={{ flexShrink: 0 }}
                 >
                   {lang}
                 </button>
@@ -334,8 +432,12 @@ export default function App() {
             </div>
           </div>
 
-          {/* Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 16 }}>
+          {/* Project cards grid */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fill, minmax(320px, 1fr))",
+            gap: isMobile ? 12 : 16,
+          }}>
             <AnimatePresence mode="popLayout">
               {filteredRepos.map((repo, i) => (
                 <motion.a
@@ -347,43 +449,56 @@ export default function App() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ delay: i * 0.06, duration: 0.4 }}
+                  transition={{ delay: i * 0.05, duration: 0.4 }}
                   className="card"
-                  style={{ padding: "28px 28px 24px", textDecoration: "none", display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 220 }}
+                  style={{
+                    padding: isMobile ? "20px 20px 18px" : "28px 28px 24px",
+                    textDecoration: "none", display: "flex", flexDirection: "column",
+                    justifyContent: "space-between", minHeight: isMobile ? 170 : 220,
+                  }}
                 >
                   <div>
-                    {/* Title row */}
-                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 14, gap: 8 }}>
-                      <h3 style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: 18, letterSpacing: "-0.02em", color: "#f5f5f5", lineHeight: 1.3 }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 10, gap: 8 }}>
+                      <h3 style={{
+                        fontFamily: "Syne, sans-serif", fontWeight: 700,
+                        fontSize: isMobile ? 16 : 18, letterSpacing: "-0.02em",
+                        color: "#f5f5f5", lineHeight: 1.3,
+                      }}>
                         {repo.name}
                       </h3>
-                      <span style={{ color: "#555", flexShrink: 0, marginTop: 2, transition: "color 0.2s" }}>
-                        <IconExternalLink size={15} />
+                      <span style={{ color: "#555", flexShrink: 0, marginTop: 2 }}>
+                        <IconExternalLink size={14} />
                       </span>
                     </div>
-                    {/* Description */}
-                    <p style={{ fontSize: 13.5, color: "#6b6b6b", lineHeight: 1.65, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                    <p style={{
+                      fontSize: isMobile ? 13 : 13.5, color: "#6b6b6b", lineHeight: 1.65,
+                      display: "-webkit-box", WebkitLineClamp: isMobile ? 2 : 3,
+                      WebkitBoxOrient: "vertical", overflow: "hidden",
+                    }}>
                       {repo.description || "An open-source project on GitHub."}
                     </p>
                   </div>
 
-                  {/* Footer */}
-                  <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #222", display: "flex", alignItems: "center", gap: 16, fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: "#555" }}>
+                  <div style={{
+                    marginTop: 16, paddingTop: 14, borderTop: "1px solid #222",
+                    display: "flex", alignItems: "center", gap: 14,
+                    fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: "#555",
+                  }}>
                     {repo.language && (
-                      <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#e8ff59", display: "inline-block" }} />
+                      <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                        <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#e8ff59", display: "inline-block" }} />
                         {repo.language}
                       </span>
                     )}
-                    <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                    <span style={{ display: "flex", alignItems: "center", gap: 3 }}>
                       <IconStar /> {repo.stargazers_count}
                     </span>
                     {repo.forks_count > 0 && (
-                      <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                      <span style={{ display: "flex", alignItems: "center", gap: 3 }}>
                         <IconFork /> {repo.forks_count}
                       </span>
                     )}
-                    <span style={{ marginLeft: "auto", fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#3a3a3a", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                    <span style={{ marginLeft: "auto", fontSize: 10, color: "#3a3a3a", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       {repo.updated_at ? new Date(repo.updated_at).getFullYear() : ""}
                     </span>
                   </div>
@@ -394,34 +509,65 @@ export default function App() {
         </section>
 
         {/* ─── CONTACT ─── */}
-        <section id="contact" style={{ paddingBottom: 120 }}>
+        <section id="contact" style={{ paddingBottom: isMobile ? 80 : 120 }}>
           <motion.div
             className="cta-strip"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}
+            style={{
+              display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
+              padding: isMobile ? "40px 24px" : "64px 48px",
+            }}
           >
-            {/* Accent label */}
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "5px 14px", borderRadius: 999, border: "1px solid rgba(232,255,89,0.25)", background: "rgba(232,255,89,0.08)", marginBottom: 28 }}>
-              <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.12em", color: "#e8ff59" }}>Open to opportunities</span>
+            {/* Badge */}
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 6, padding: "5px 14px",
+              borderRadius: 999, border: "1px solid rgba(232,255,89,0.25)",
+              background: "rgba(232,255,89,0.08)", marginBottom: 24,
+            }}>
+              <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.12em", color: "#e8ff59" }}>
+                Open to opportunities
+              </span>
             </div>
 
-            <h2 style={{ fontFamily: "Syne, sans-serif", fontWeight: 800, fontSize: "clamp(36px, 5.5vw, 68px)", letterSpacing: "-0.04em", lineHeight: 1.05, color: "#f5f5f5", marginBottom: 20, maxWidth: 600 }}>
+            <h2 style={{
+              fontFamily: "Syne, sans-serif", fontWeight: 800,
+              fontSize: isMobile ? "clamp(28px, 8vw, 44px)" : "clamp(36px, 5.5vw, 68px)",
+              letterSpacing: "-0.04em", lineHeight: 1.08,
+              color: "#f5f5f5", marginBottom: 16, maxWidth: 560,
+            }}>
               Let&apos;s build something great together.
             </h2>
 
-            <p style={{ fontSize: 15, color: "#6b6b6b", maxWidth: 420, lineHeight: 1.7, marginBottom: 36 }}>
-              Have a project in mind or just want to say hello? Drop me an email and I&apos;ll get back to you.
+            <p style={{ fontSize: 14, color: "#6b6b6b", maxWidth: 380, lineHeight: 1.7, marginBottom: 32 }}>
+              Have a project in mind or just want to say hello? Drop me an email — I&apos;ll get back to you.
             </p>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
-              <a href={`mailto:${profile.email || "hello@portfolio.dev"}`} className="btn-accent">
+            <div style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              gap: 10, justifyContent: "center",
+              width: isMobile ? "100%" : "auto",
+            }}>
+              <a
+                href={`mailto:${profile.email || "hello@portfolio.dev"}`}
+                className="btn-accent"
+                style={isMobile ? { justifyContent: "center" } : {}}
+              >
                 <IconMail size={15} />
-                {profile.email || "hello@portfolio.dev"}
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: isMobile ? 240 : "none" }}>
+                  {profile.email || "hello@portfolio.dev"}
+                </span>
               </a>
-              <a href={profile.html_url} target="_blank" rel="noreferrer" className="btn-ghost">
+              <a
+                href={profile.html_url}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost"
+                style={isMobile ? { justifyContent: "center" } : {}}
+              >
                 <IconGithub size={15} /> View GitHub
               </a>
             </div>
@@ -431,13 +577,20 @@ export default function App() {
       </main>
 
       {/* ─── FOOTER ─── */}
-      <footer style={{ borderTop: "1px solid #1a1a1a", padding: "28px 32px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-          <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: "#3a3a3a", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+      <footer style={{ borderTop: "1px solid #1a1a1a", padding: isMobile ? "20px" : "28px 32px" }}>
+        <div style={{
+          maxWidth: 1100, margin: "0 auto",
+          display: "flex", alignItems: "center",
+          justifyContent: "space-between", flexWrap: "wrap", gap: 8,
+        }}>
+          <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#3a3a3a", textTransform: "uppercase", letterSpacing: "0.1em" }}>
             © {new Date().getFullYear()} {profile.name || profile.login}
           </span>
-          <a href={profile.html_url} target="_blank" rel="noreferrer"
-            style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: "#3a3a3a", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em", transition: "color 0.2s" }}
+          <a
+            href={profile.html_url}
+            target="_blank"
+            rel="noreferrer"
+            style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#3a3a3a", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em", transition: "color 0.2s" }}
             onMouseEnter={e => e.currentTarget.style.color = "#a0a0a0"}
             onMouseLeave={e => e.currentTarget.style.color = "#3a3a3a"}
           >
