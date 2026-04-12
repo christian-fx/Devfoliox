@@ -73,17 +73,49 @@ export default function Home() {
                   <span className="color-dim"> ~</span>
                   <span className="color-command"> npx devfolio</span>
                 </div>
-                <div className="terminal-line color-dim">
-                  ? Enter your GitHub username: <span className="color-highlight">octocat</span>
+                
+                <div className="terminal-line color-highlight" style={{ marginTop: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <iconify-icon icon="lucide:rocket"></iconify-icon>
+                  Devfolio Initialization Wizard
+                </div>
+                
+                <div className="terminal-line color-dim" style={{ marginTop: '12px' }}>
+                  <span style={{ color: '#ffbd2e', marginRight: '6px' }}>?</span> What is your GitHub username? <span className="color-prompt">christian-fx</span>
                 </div>
                 <div className="terminal-line color-dim">
-                  ? Choose a template: <span className="color-highlight">minimal</span>
+                  <span style={{ color: '#ffbd2e', marginRight: '6px' }}>?</span> Which template would you like to use? <span className="color-prompt">modern</span>
                 </div>
-                <br />
-                <div className="terminal-line wrap">
-                  <span className="color-highlight">Success!</span> Created portfolio-octocat
+
+                <div className="terminal-line color-dim" style={{ marginTop: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <iconify-icon icon="eos-icons:loading" style={{ color: '#58a6ff' }}></iconify-icon>
+                  Fetching GitHub public REST APIs...
                 </div>
-                <div className="terminal-line color-dim">Run: cd portfolio-octocat && npm install && npm run dev</div>
+                <div className="terminal-line color-success" style={{ paddingLeft: '24px', opacity: 0.9 }}>
+                  ✓ Secured profile data and repository history
+                </div>
+                <div className="terminal-line color-success" style={{ paddingLeft: '24px', opacity: 0.9 }}>
+                  ✓ Cached top tech stack (JavaScript, React, Node.js)
+                </div>
+
+                <div className="terminal-line color-dim" style={{ marginTop: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <iconify-icon icon="eos-icons:loading" style={{ color: '#d2a8ff' }}></iconify-icon>
+                  Scaffolding React project...
+                </div>
+                <div className="terminal-line color-success" style={{ paddingLeft: '24px', opacity: 0.9 }}>
+                  ✓ Created structural directory portfolio-christian-fx
+                </div>
+                <div className="terminal-line color-success" style={{ paddingLeft: '24px', opacity: 0.9 }}>
+                  ✓ Configured Tailwind CSS utility engine
+                </div>
+                
+                <div className="terminal-line wrap" style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <iconify-icon icon="lucide:party-popper" style={{ color: '#d2a8ff' }}></iconify-icon>
+                  <span className="color-highlight" style={{ fontWeight: 'bold' }}>Success!</span> <span className="color-command">Your developer portfolio is locked and loaded.</span>
+                </div>
+                
+                <div className="terminal-line color-command" style={{ marginTop: '12px', paddingLeft: '28px' }}>cd <span style={{ color: '#c9d1d9' }}>portfolio-christian-fx</span></div>
+                <div className="terminal-line color-command" style={{ paddingLeft: '28px' }}>npm <span style={{ color: '#c9d1d9' }}>install</span></div>
+                <div className="terminal-line color-command" style={{ paddingLeft: '28px' }}>npm <span style={{ color: '#c9d1d9' }}>run dev</span></div>
               </div>
             </div>
           </div>
