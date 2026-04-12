@@ -17,6 +17,7 @@
 - [Templates](#templates)
 - [Project Structure](#project-structure)
 - [Configuration](#configuration)
+- [Documentation & Showcase](#documentation--showcase)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -24,20 +25,20 @@
 
 ## Overview
 
-Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered portfolio website for developers. Run a single command, answer two quick questions, and you get a production-ready React application that automatically pulls your repositories, programming languages, star counts, and profile information directly from the GitHub API — no manual updates ever required.
+Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered portfolio website for developers. Run a single command, answer two quick questions, and you get a production-ready application that automatically pulls your repositories, programming languages, star counts, and profile information directly from the GitHub API — no manual updates ever required.
 
 ---
 
 ## Features
 
-- 🚀 **One-command scaffolding** — `npx devfolio` and you're done.
-- 🔄 **Live GitHub data** — repos, stars, languages, bio, and avatar are fetched at runtime from the GitHub API, so your portfolio stays current automatically.
-- 🎨 **Multiple templates** — choose from pre-built portfolio templates during setup.
-- ⚡ **Vite-powered** — lightning-fast dev server and optimised production builds.
-- 💨 **Tailwind CSS** — utility-first styling that's easy to customise.
-- ✨ **Optional animations** — smooth entrance and scroll animations out of the box.
-- 📦 **Zero config needed** — the generated project is ready to run with `npm install && npm run dev`.
-- 🌐 **Instantly deployable** — drop the build folder onto Vercel, Netlify, or GitHub Pages.
+- **One-command scaffolding** — `npx devfolio` and you're done.
+- **Live GitHub data** — repos, stars, languages, bio, and avatar are fetched at runtime from the GitHub API, so your portfolio stays current automatically.
+- **Multiple architectures** — choose from React, Next.js, and Vanilla JS portfolio templates.
+- **Vite-powered** — lightning-fast dev server and optimised production builds.
+- **Tailwind CSS** — utility-first styling that's easy to customise.
+- **Optional animations** — smooth entrance and scroll animations out of the box.
+- **Zero config needed** — the generated project is ready to run right after scaffolding.
+- **Instantly deployable** — deploy the frontend seamlessly to Vercel, Netlify, or GitHub Pages.
 
 ---
 
@@ -45,8 +46,8 @@ Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered
 
 | Layer | Technology |
 |---|---|
-| CLI | Node.js, [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) |
-| Frontend framework | [React](https://react.dev/) |
+| CLI Engine | Node.js, [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) |
+| Core Frameworks | [React](https://react.dev/), [Next.js](https://nextjs.org/) |
 | Build tool | [Vite](https://vitejs.dev/) |
 | Styling | [Tailwind CSS](https://tailwindcss.com/) |
 | Animations | [Framer Motion](https://www.framer.com/motion/) *(optional)* |
@@ -59,7 +60,7 @@ Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered
 > **Prerequisite:** Node.js ≥ 18 and npm ≥ 9.
 
 ```bash
-npx devfolio
+npx devfolio init
 ```
 
 The CLI will ask two questions:
@@ -74,7 +75,7 @@ The CLI will ask two questions:
 You can also run it non-interactively:
 
 ```bash
-npx devfolio generate your-username --template minimal
+npx devfolio generate your-username --template react-minimal
 ```
 
 A new project folder is created in your current directory. Navigate into it and start the dev server:
@@ -85,7 +86,7 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` to preview your portfolio. 🎉
+Open `http://localhost:5173` to preview your portfolio.
 
 ---
 
@@ -99,7 +100,7 @@ npx devfolio
 │  CLI (Node.js)                  │
 │  • Prompts for GitHub username  │
 │  • Prompts for template choice  │
-│  • Copies template files        │
+│  • Copies layout constraints    │
 │  • Injects username config      │
 └──────────────┬──────────────────┘
                │ scaffolds
@@ -114,16 +115,16 @@ npx devfolio
 └─────────────────────────────────┘
 ```
 
-The CLI copies the chosen template into a new directory named `portfolio-<username>`, then writes a small config file (`src/config.js`) with the GitHub username. When the React app loads in the browser, it reads this config and queries the GitHub REST API to populate every section of the portfolio dynamically.
+The CLI tightly orchestrates the chosen framework template into a new directory named `portfolio-<username>`, then writes a small config file (`src/config.js`) binding the GitHub user path. When the application mounts into the browser, it reads this configuration and fetches securely from the GitHub REST API to populate the UI dynamically.
 
 ---
 
 ## Templates
 
-| Template | Description |
-|---|---|
-| **Minimal** | Clean, single-page layout focused on readability. |
-| **Modern** | Contemporary layout with richer visual hierarchy. |
+| Template | Framework | Description |
+|---|---|---|
+| **Minimal** | React, Vanilla JS, Next.js | Clean, single-page layout focused tightly on structural readability. |
+| **Modern** | React, Vanilla JS, Next.js | Contemporary layout with rich visual components and deep typography hierarchy. |
 
 More templates are in development. Community contributions are welcome — see [Contributing](#contributing).
 
@@ -131,7 +132,7 @@ More templates are in development. Community contributions are welcome — see [
 
 ## Project Structure
 
-After running `npx devfolio`, the generated project looks like this:
+After running `npx devfolio`, a standard React generated layout looks like this:
 
 ```
 portfolio-your-username/
@@ -167,7 +168,20 @@ Open `src/config.js` in the generated project to update the GitHub username:
 export const GITHUB_USERNAME = "your-github-username";
 ```
 
-All other visual changes are made by editing the React components and Tailwind classes directly — no special build step required.
+All other visual adjustments can be directly handled inside the generated native layout components.
+
+---
+
+## Documentation & Showcase
+
+Full architectural guides, CLI command charts, and a Community Showcase gallery of live implementations can be found within the `/docs` directory. This is a standalone React SPA dedicated to tracking Devfolio updates.
+
+To spin up the docs:
+```bash
+cd docs
+npm install
+npm run dev
+```
 
 ---
 
@@ -181,7 +195,7 @@ Contributions, bug reports, and new template ideas are very welcome!
 4. Push to the branch: `git push origin feat/my-new-template`.
 5. Open a Pull Request.
 
-Please make sure your code follows the existing style and that any new template is placed under `templates/<template-name>/`.
+Ensure custom designs respect the internal global stylesheet constraints and are stored cleanly within `templates/<framework>-<type>`.
 
 ---
 
