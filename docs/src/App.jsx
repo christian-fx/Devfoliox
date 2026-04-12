@@ -6,10 +6,13 @@ import DocPage from './pages/DocPage';
 import Templates from './pages/Templates';
 import TemplateDetails from './pages/TemplateDetails';
 import Showcase from './pages/Showcase';
+import ScrollManager from './components/shared/ScrollManager';
 
 function App() {
   return (
-    <Routes>
+    <>
+      <ScrollManager />
+      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/templates" element={<Templates />} />
       <Route path="/templates/:id" element={<TemplateDetails />} />
@@ -19,6 +22,7 @@ function App() {
         <Route path=":slug" element={<DocPage />} />
       </Route>
     </Routes>
+    </>
   );
 }
 

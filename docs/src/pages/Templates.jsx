@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/shared/Header';
 import Footer from '../components/shared/Footer';
 import TemplateCard from '../components/templates/TemplateCard';
@@ -106,6 +107,28 @@ export default function Templates() {
             `}
           </style>
         </div>
+
+        {/* Explore Showcase CTA */}
+        <section className="cta-section">
+          <div className="cta-shell">
+            <div className="cta-panel" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+              <div className="cta-eyebrow">
+                <iconify-icon icon="lucide:compass" style={{ fontSize: '14px' }}></iconify-icon>
+                View Live Integrations
+              </div>
+              <h2 className="cta-title">See them in action</h2>
+              <p className="cta-text" style={{ maxWidth: '600px', margin: '16px auto 32px' }}>
+                Want to see what elite developers are building with these template architectures globally? Discover beautifully customized live implementations in the Devfolio Community Showcase.
+              </p>
+              <div className="cta-actions" style={{ justifyContent: 'center' }}>
+                <Link to="/showcase" className="btn btn-cta-light" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <iconify-icon icon="lucide:star"></iconify-icon>
+                  Explore the Hall of Fame
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
       </main>
 
