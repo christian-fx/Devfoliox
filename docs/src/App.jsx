@@ -1,7 +1,8 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
-import Documentation from './pages/Documentation';
+import DocLayout from './components/docs/DocLayout';
+import DocPage from './pages/DocPage';
 import Templates from './pages/Templates';
 import Showcase from './pages/Showcase';
 
@@ -9,9 +10,12 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/documentation/*" element={<Documentation />} />
       <Route path="/templates" element={<Templates />} />
       <Route path="/showcase" element={<Showcase />} />
+      <Route path="/documentation" element={<DocLayout />}>
+        <Route index element={<Navigate to="/documentation/introduction" replace />} />
+        <Route path=":slug" element={<DocPage />} />
+      </Route>
     </Routes>
   );
 }
