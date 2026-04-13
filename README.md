@@ -195,12 +195,11 @@ This project was built by a team. Big shoutout to everyone who made it happen:
 
 | Name | Role | GitHub |
 |---|---|---|
-| Christian Akabueze | CLI Core & GitHub Data Layer | [@christian-fx](https://github.com/christian-fx) |
-| Person 2 | React Templates | [@person2](https://github.com/person2) |
-| Person 3 | Vanilla JS Templates | [@person3](https://github.com/person3) |
-| Person 4 | HTML/CSS Templates | [@person4](https://github.com/person4) |
-| Person 5 | Docs Website — Design & Frontend | [@person5](https://github.com/person5) |
-| Person 6 | Docs Website — Content & Structure | [@person6](https://github.com/person6) |
+| Gidoen Onyegbula | CLI Core & GitHub Data Layer | [@Gfrosh](https://github.com/Gfrosh) |
+| Allwell Azubike | React Modern Template | [@allwellazubike](https://github.com/allwellazubike) |
+| Maduka Jesse Nnamdi | React Minimal Template | [@Jesse-23](https://github.com/Jesse-23) |
+| Okaekwu Kemdy Osmond| Vanilla (HTML/CSS/JS) Templates | [@OsmondJnr](https://github.com/OsmondJnr) |
+| Christian Akabueze | Docs Website — Design, Content & Structure | [@Christian-fx](https://github.com/Christian-fx) |
 
 ---
 
