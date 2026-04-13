@@ -68,14 +68,14 @@ export default function Home() {
                 <div className="terminal-line">
                   <span className="color-prompt">➜</span>
                   <span className="color-dim"> ~</span>
-                  <span className="color-command"> npx devfolio</span>
+                  <span className="color-command"> npx devfolio init</span>
                 </div>
-                
+
                 <div className="terminal-line color-highlight" style={{ marginTop: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <iconify-icon icon="lucide:rocket"></iconify-icon>
                   Devfolio Initialization Wizard
                 </div>
-                
+
                 <div className="terminal-line color-dim" style={{ marginTop: '12px' }}>
                   <span style={{ color: '#ffbd2e', marginRight: '6px' }}>?</span> What is your GitHub username? <span className="color-prompt">christian-fx</span>
                 </div>
@@ -104,12 +104,12 @@ export default function Home() {
                 <div className="terminal-line color-success" style={{ paddingLeft: '24px', opacity: 0.9 }}>
                   ✓ Configured Tailwind CSS utility engine
                 </div>
-                
+
                 <div className="terminal-line wrap" style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <iconify-icon icon="lucide:party-popper" style={{ color: '#d2a8ff' }}></iconify-icon>
                   <span className="color-highlight" style={{ fontWeight: 'bold' }}>Success!</span> <span className="color-command">Your developer portfolio is locked and loaded.</span>
                 </div>
-                
+
                 <div className="terminal-line color-command" style={{ marginTop: '12px', paddingLeft: '28px' }}>cd <span style={{ color: '#c9d1d9' }}>portfolio-christian-fx</span></div>
                 <div className="terminal-line color-command" style={{ paddingLeft: '28px' }}>npm <span style={{ color: '#c9d1d9' }}>install</span></div>
                 <div className="terminal-line color-command" style={{ paddingLeft: '28px' }}>npm <span style={{ color: '#c9d1d9' }}>run dev</span></div>
@@ -194,7 +194,7 @@ export default function Home() {
                   <div className="step-number">1</div>
                   <div className="step-content">
                     <h3>Run the CLI command</h3>
-                    <p>Execute <code style={{fontFamily: 'monospace'}}>npx devfolio</code> via your terminal. It will prompt you for your GitHub username and preferred template.</p>
+                    <p>Execute <code style={{ fontFamily: 'monospace' }}>npx devfolio</code> via your terminal. It will prompt you for your GitHub username and preferred template.</p>
                   </div>
                 </div>
                 <div className="workflow-step">
