@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import Header from '../components/shared/Header';
-import Footer from '../components/shared/Footer';
 import { TEMPLATE_DATA } from '../data/templatesData';
 
 export default function TemplateDetails() {
@@ -22,7 +20,6 @@ export default function TemplateDetails() {
 
   return (
     <>
-      <Header />
       <main style={{ paddingBottom: '80px', marginTop: '64px' }}>
         
         {/* Breadcrumbs and Hero */}
@@ -89,7 +86,6 @@ export default function TemplateDetails() {
         </section>
 
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,50 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { sections } from '../../data/docsData';
 
 export default function Sidebar({ isOpen, onClose }) {
-  const sections = [
-    {
-      title: 'Getting Started',
-      items: [
-        { name: 'Introduction', slug: 'introduction', icon: 'lucide:book-open' },
-        { name: 'Quick Start', slug: 'quickstart', icon: 'lucide:zap' },
-        { name: 'Installation', slug: 'installation', icon: 'lucide:download' },
-      ]
-    },
-    {
-      title: 'Core Concepts',
-      items: [
-        { name: 'Configuration', slug: 'configuration', icon: 'lucide:settings' },
-        { name: 'Templates', slug: 'templates', icon: 'lucide:layout-template' },
-        { name: 'GitHub Integration', slug: 'github-integration', icon: 'lucide:github' },
-        { name: 'Deployment', slug: 'deployment', icon: 'lucide:rocket' },
-      ]
-    },
-    {
-      title: 'CLI Reference',
-      items: [
-        { name: 'Commands', slug: 'commands', icon: 'lucide:terminal' },
-        { name: 'Options & Flags', slug: 'options', icon: 'lucide:sliders' },
-        { name: 'Environment Variables', slug: 'environment', icon: 'lucide:environment' },
-      ]
-    },
-    {
-      title: 'Advanced',
-      items: [
-        { name: 'Customization', slug: 'customization', icon: 'lucide:palette' },
-        { name: 'API Reference', slug: 'api', icon: 'lucide:code-2' },
-        { name: 'Troubleshooting', slug: 'troubleshooting', icon: 'lucide:help-circle' },
-      ]
-    }
-  ];
-
   return (
     <>
       <div className={`overlay ${isOpen ? 'active' : ''}`} onClick={onClose} id="overlay"></div>
       <aside className={`sidebar ${isOpen ? 'open' : ''}`} id="sidebar" style={{ transform: isOpen ? 'translateX(0)' : '' }}>
-        <div className="sidebar-header">
-          <div className="sidebar-title">Documentation</div>
-          <div className="sidebar-version">Version 1.0.0</div>
+        <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+          <div>
+            <div className="sidebar-title">Documentation</div>
+            <div className="sidebar-version">Version 1.0.0</div>
+          </div>
+          <button 
+            onClick={onClose} 
+            className="mobile-only" 
+            style={{ background: 'none', border: 'none', padding: '4px', cursor: 'pointer', color: 'var(--foreground)', marginTop: '-4px' }}
+            aria-label="Close menu"
+          >
+            <iconify-icon icon="lucide:x" style={{ fontSize: '24px' }}></iconify-icon>
+          </button>
         </div>
         
         <nav className="sidebar-nav">

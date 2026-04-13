@@ -87,6 +87,9 @@ export default function MarkdownRenderer({ content }) {
             if (innerStr.includes('[!TIP]')) { type = 'tip'; title = 'Pro Tip'; icon = 'lucide:lightbulb'; }
             if (innerStr.includes('[!WARNING]')) { type = 'warning'; title = 'Warning'; icon = 'lucide:alert-triangle'; }
             if (innerStr.includes('[!SUCCESS]')) { type = 'success'; title = 'Success!'; icon = 'lucide:check-circle'; }
+            if (innerStr.includes('[!NOTE]') || innerStr.includes('[!INFO]')) { type = 'info'; title = 'Note'; icon = 'lucide:info'; }
+            if (innerStr.includes('[!IMPORTANT]')) { type = 'important'; title = 'Important'; icon = 'lucide:message-square-warning'; }
+            if (innerStr.includes('[!CAUTION]')) { type = 'caution'; title = 'Caution'; icon = 'lucide:octagon-alert'; }
           }
           
           const cleanChildren = React.Children.map(children, child => {

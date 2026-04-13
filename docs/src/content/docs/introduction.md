@@ -5,7 +5,7 @@ Devfolio is a powerful IDE/CLI tool that generates stunning developer portfolios
 ## What is Devfolio?
 **Devfolio** is an open-source CLI tool that entirely eliminates the friction of building and maintaining a developer portfolio. Instead of manually pushing updates to your projects, skills, and statistics every time you learn something new, Devfolio automatically syncs with your GitHub profile to create a living, breathing portfolio that stays current.
 
-Built on modern web technologies like `Vite`, `React`, `Tailwind CSS`, and optionally `Framer Motion`, Devfolio generates production-ready static sites that are blazing fast, fully customizable, and free to deploy anywhere.
+Built on modern web technologies like `Vite`, `React`, `Vanilla JS`, `Tailwind CSS`, and optionally `Framer Motion`. Devfolio generates production-ready static sites that are blazing fast, fully customizable, and free to deploy anywhere. We are also actively developing support for `Next.js` (Coming Soon).
 
 ## Core Philosophy
 1. **Data Driven**: Your code history is your best resume. We fetch real analytics directly from GitHub REST APIs.

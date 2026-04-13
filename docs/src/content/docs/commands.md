@@ -2,18 +2,26 @@
 
 The Devfolio CLI is designed to be highly intuitive. It provides both an interactive guided wizard for beginners and a robust suite of parameterized commands for power users and CI/CD environments.
 
-## The Interactive Wizard (Default)
+## The Interactive Wizard
 
-Running Devfolio without any arguments boots up the prompt-driven wizard.
+Running the `init` command boots up the prompt-driven wizard. This is the recommended way for new users to scaffold their first portfolio.
 
 ```bash
-npx devfolio
+npx devfolio init
 ```
 
 **Wizard Flow:**
 1. **GitHub Prompt:** `? What is your GitHub username? (e.g., christian-fx)`
-2. **Template Prompt:** `? Which template would you like to use? [Minimal / Modern]`
-3. **Confirmation:** `? Scaffold portfolio in ./portfolio-[username]? (Y/n)`
+2. **Stack Prompt:** `? Choose a tech stack: [Vanilla / React / Next.js]`
+3. **Template Prompt:** `? Which template would you like to use? [Minimal / Modern]`
+
+## Command Discovery & Help
+
+Running Devfolio without any subcommands (or using the `--help` flag) displays the help manual, which lists all available commands and global options.
+
+```bash
+npx devfolio --help
+```
 
 ## The `generate` Command
 
@@ -35,10 +43,15 @@ npx devfolio generate your-github-handle
 npx devfolio generate your-github-handle --template modern
 ```
 
-**Bypass collision warnings (Force Overwrite):**
-If a directory with that name already exists, Devfolio safely aborts. You can override this behavior using force.
-```bash
 npx devfolio generate your-github-handle --force
+```
+
+## The `list-templates` Command
+
+Use this command to quickly see all available portfolio templates before running an initialization.
+
+```bash
+npx devfolio list-templates
 ```
 
 > [!INFO]

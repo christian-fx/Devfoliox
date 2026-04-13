@@ -13,12 +13,13 @@ Before you begin, ensure you have the following installed on your machine:
 Open your terminal and run the standard npx command. This fetches the most recent stable release of Devfolio directly from the npm registry.
 
 ```bash
-npx devfolio
+npx devfolio init
 ```
 
-You will be greeted by the Devfolio Wizard, which will ask you two simple questions:
+You will be greeted by the Devfolio Wizard, which will ask you three simple questions:
 1. What is your GitHub username?
-2. Which starting template would you like to use? (Minimal or Modern)
+2. Which tech stack would you like to use? (React, Vanilla JS, or Next.js)
+3. Which starting template would you like to use? (Minimal or Modern)
 
 ## 2. Start Developing
 

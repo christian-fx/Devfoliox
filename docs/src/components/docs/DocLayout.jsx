@@ -1,49 +1,46 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
 import Header from '../shared/Header';
 import Sidebar from './Sidebar';
 import SearchModal from './SearchModal';
 
-export default function DocLayout() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+export default function DocLayout({ isSidebarOpen, setIsSidebarOpen }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const { slug } = useParams();
+
+  // Track viewport width for dynamic top offset
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth <= 1024);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+
+  // Scroll to top on every page navigation
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    // Also close sidebar on mobile after navigation
+    if (isMobile) setIsSidebarOpen(false);
+  }, [slug, isMobile, setIsSidebarOpen]);
+
+  // Find the current page name from the shared sections data (now handled in App.jsx for header)
+  
+  // On mobile, the header is 64px (main row) + 44px (docs sub-row) = 108px tall
+  const topOffset = isMobile ? '108px' : '64px';
 
   return (
     <>
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <Header />
-      <div className="docs-layout" style={{ display: 'flex', minHeight: 'calc(100vh - 64px)' }}>
+      <div
+        className="docs-layout"
+        style={{ marginTop: topOffset }}
+      >
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-        <main className="main-content" style={{ flex: 1, marginLeft: window.innerWidth > 1024 ? '280px' : '0' }}>
-          <div className="content-wrapper" style={{ maxWidth: '800px', margin: '0 auto', padding: '24px 32px' }}>
-            
-            {/* Mobile Sidebar Toggle Button */}
-            <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '24px' }}>
-              <button 
-                className="btn btn-secondary mobile-sidebar-trigger"
-                onClick={() => setIsSidebarOpen(true)}
-                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 12px', fontSize: '13px', border: 'none' }}
-              >
-                <iconify-icon icon="lucide:layout-sidebar"></iconify-icon>
-                Docs Menu
-              </button>
-            </div>
-            <style>{`
-              @media (min-width: 1025px) {
-                .mobile-sidebar-trigger { display: none !important; }
-              }
-            `}</style>
+        <main className="main-content">
+          {/* key={slug} forces remount on page change, re-triggering the animation */}
+          <div key={slug} className="content-wrapper page-animate">
             
             <Outlet />
-            
-            {/* Automatic Footer for Docs */}
-            <footer className="doc-footer" style={{ marginTop: '64px', borderTop: '1px solid var(--border)', paddingTop: '32px', display: 'flex', justifyContent: 'space-between', color: 'var(--muted-foreground)', fontSize: '14px' }}>
-              <div className="footer-links" style={{ display: 'flex', gap: '16px' }}>
-                <a href="https://github.com/christian-fx/Devfolio" target="_blank" rel="noopener noreferrer">Edit this page</a>
-                <a href="https://github.com/christian-fx/Devfolio" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-              </div>
-              <div>Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
-            </footer>
           </div>
         </main>
       </div>
