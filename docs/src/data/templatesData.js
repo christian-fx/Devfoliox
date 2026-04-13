@@ -5,10 +5,12 @@ export const TEMPLATE_DATA = [
     title: 'React Minimal',
     description: 'A deeply clean, typography-focused layout designed to mimic stark engineering documents. Built strictly with React utility structures.',
     image: '/images/minimal.png',
-    heroImage: '/images/templates/minimal-hero.png',
+    heroImage: '/images/templates/reactMinimal.png',
     gallery: [
-      '/images/templates/minimal-1.png',
-      '/images/templates/minimal-2.png'
+      '/images/templates/reactMinimal.png',
+      '/images/templates/reactMinimal1.png',
+      '/images/templates/reactMinimal2.png',
+      '/images/templates/reactMinimal3.png'
     ],
     command: 'npx devfolio your-github-handle --template minimal',
     previewUrl: '#',
@@ -30,10 +32,12 @@ export const TEMPLATE_DATA = [
     title: 'React Modern',
     description: 'A highly dynamic, visually engaging layout utilizing glassmorphism, floating grids, and fluid animations driving React state.',
     image: '/images/modern.png',
-    heroImage: '/images/templates/modern-hero.png',
+    heroImage: '/images/templates/reactModern.png',
     gallery: [
-      '/images/templates/modern-1.png',
-      '/images/templates/modern-2.png'
+      '/images/templates/reactModern1.png',
+      '/images/templates/reactModern2.png',
+      '/images/templates/reactModern3.png',
+      '/images/templates/reactModern4.png'
     ],
     command: 'npx devfolio your-github-handle --template modern',
     previewUrl: '#',
@@ -55,10 +59,10 @@ export const TEMPLATE_DATA = [
     title: 'Vanilla Minimal',
     description: 'Raw HTML, CSS, and Vanilla JavaScript. The absolute bleeding edge of high-performance localized dom manipulation.',
     image: '/images/minimal.png',
-    heroImage: '/images/templates/minimal-hero.png',
+    heroImage: '/images/vanillaMinimal.png',
     gallery: [
-      '/images/templates/minimal-1.png',
-      '/images/templates/minimal-2.png'
+      '/images/templates/vanillaMinimal1.png',
+      '/images/templates/vanillaMinimal2.png'
     ],
     command: 'npx devfolio your-github-handle --template minimal --fw vanilla',
     previewUrl: '#',
@@ -81,10 +85,12 @@ export const TEMPLATE_DATA = [
     title: 'Vanilla Modern',
     description: 'Native DOM-driven animations matching the physics of React without the massive bundle overhead.',
     image: '/images/modern.png',
-    heroImage: '/images/templates/modern-hero.png',
+    heroImage: '/images/vanillaModern.png',
     gallery: [
-      '/images/templates/modern-1.png',
-      '/images/templates/modern-2.png'
+      '/images/templates/vanillaModern1.png',
+      '/images/templates/vanillaModern2.png',
+      '/images/templates/vanillaModern3.png',
+      '/images/templates/vanillaModern4.png'
     ],
     command: 'npx devfolio your-github-handle --template modern --fw vanilla',
     previewUrl: '#',
