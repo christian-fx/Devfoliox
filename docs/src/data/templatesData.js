@@ -5,6 +5,11 @@ export const TEMPLATE_DATA = [
     title: 'React Minimal',
     description: 'A deeply clean, typography-focused layout designed to mimic stark engineering documents. Built strictly with React utility structures.',
     image: '/images/minimal.png',
+    heroImage: '/images/templates/minimal-hero.png',
+    gallery: [
+      '/images/templates/minimal-1.png',
+      '/images/templates/minimal-2.png'
+    ],
     command: 'npx devfolio your-github-handle --template minimal',
     previewUrl: '#',
     stack: [
@@ -25,12 +30,16 @@ export const TEMPLATE_DATA = [
     title: 'React Modern',
     description: 'A highly dynamic, visually engaging layout utilizing glassmorphism, floating grids, and fluid animations driving React state.',
     image: '/images/modern.png',
+    heroImage: '/images/templates/modern-hero.png',
+    gallery: [
+      '/images/templates/modern-1.png',
+      '/images/templates/modern-2.png'
+    ],
     command: 'npx devfolio your-github-handle --template modern',
     previewUrl: '#',
     stack: [
       { name: 'React', icon: 'logos:react' },
-      { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' },
-      { name: 'Framer Motion', icon: 'devicon:framermotion' }
+      { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' }
     ],
     features: [
       'Scroll-triggered staggering entry animations',
@@ -46,6 +55,11 @@ export const TEMPLATE_DATA = [
     title: 'Vanilla Minimal',
     description: 'Raw HTML, CSS, and Vanilla JavaScript. The absolute bleeding edge of high-performance localized dom manipulation.',
     image: '/images/minimal.png',
+    heroImage: '/images/templates/minimal-hero.png',
+    gallery: [
+      '/images/templates/minimal-1.png',
+      '/images/templates/minimal-2.png'
+    ],
     command: 'npx devfolio your-github-handle --template minimal --fw vanilla',
     previewUrl: '#',
     stack: [
@@ -67,6 +81,11 @@ export const TEMPLATE_DATA = [
     title: 'Vanilla Modern',
     description: 'Native DOM-driven animations matching the physics of React without the massive bundle overhead.',
     image: '/images/modern.png',
+    heroImage: '/images/templates/modern-hero.png',
+    gallery: [
+      '/images/templates/modern-1.png',
+      '/images/templates/modern-2.png'
+    ],
     command: 'npx devfolio your-github-handle --template modern --fw vanilla',
     previewUrl: '#',
     stack: [
@@ -87,6 +106,12 @@ export const TEMPLATE_DATA = [
     title: 'Next.js Minimal',
     description: 'Server-Side Rendered (SSR) typographic portfolio fetching GitHub APIs purely on the server for unparalleled SEO.',
     image: '/images/minimal.png',
+    heroImage: '/images/templates/minimal-hero.png',
+    gallery: [
+      '/images/templates/minimal-1.png',
+      '/images/templates/minimal-2.png'
+    ],
+    isComingSoon: true,
     command: 'npx devfolio your-github-handle --template minimal --fw next',
     previewUrl: '#',
     stack: [
@@ -108,13 +133,18 @@ export const TEMPLATE_DATA = [
     title: 'Next.js Modern',
     description: 'The ultimate enterprise-grade layout. Server components mixed tightly with client-side Framer Motion aesthetics.',
     image: '/images/modern.png',
+    heroImage: '/images/templates/modern-hero.png',
+    gallery: [
+      '/images/templates/modern-1.png',
+      '/images/templates/modern-2.png'
+    ],
+    isComingSoon: true,
     command: 'npx devfolio your-github-handle --template modern --fw next',
     previewUrl: '#',
     stack: [
       { name: 'Next.js', icon: 'logos:nextjs-icon' },
       { name: 'React', icon: 'logos:react' },
-      { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' },
-      { name: 'Framer Motion', icon: 'devicon:framermotion' }
+      { name: 'Tailwind CSS', icon: 'logos:tailwindcss-icon' }
     ],
     features: [
       'App Router architecture mapping',
