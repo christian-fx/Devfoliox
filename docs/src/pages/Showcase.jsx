@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import Header from '../components/shared/Header';
-import Footer from '../components/shared/Footer';
 import ShowcaseCard from '../components/showcase/ShowcaseCard';
 import { SHOWCASE_DATA } from '../data/showcaseData';
 
@@ -28,7 +26,6 @@ export default function Showcase() {
 
   return (
     <>
-      <Header />
       <main>
         {/* Consistent Hero Mapping matching previous files */}
         <section className="section hero text-center" id="showcase-hero">
@@ -78,7 +75,6 @@ export default function Showcase() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

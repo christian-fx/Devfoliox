@@ -18,5 +18,12 @@ If you drastically modified your Tailwind configuration, Vite's aggressive brows
 npm run dev -- --force
 ```
 
+### "ReferenceError: config is not defined"
+If you manually updated your `src/config.js` following outdated tutorials, you might have tried to use a `config` object. Devfolio v1.0 uses direct exports. Ensure your file looks like this:
+`export const GITHUB_USERNAME = "your-handle";`
+
+> [!CAUTION]
+> Manually modifying the variable names in the configuration file beyond just the string value will likely break the data-fetching hooks.
+
 > [!INFO]
 > Sticking encountering catastrophic bugs? You can always open a formal issue tightly outlining your console errors on our core structural repository!

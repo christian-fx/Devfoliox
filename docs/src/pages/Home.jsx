@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/shared/Header';
-import Footer from '../components/shared/Footer';
 
 export default function Home() {
   useEffect(() => {
@@ -32,7 +30,6 @@ export default function Home() {
   }, []);
   return (
     <>
-      <Header />
       <main>
         {/* Hero */}
         <section className="section hero text-center" id="overview">
@@ -268,7 +265,6 @@ export default function Home() {
         </section>
 
       </main>
-      <Footer />
     </>
   );
 }

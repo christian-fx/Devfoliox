@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/shared/Header';
-import Footer from '../components/shared/Footer';
 import TemplateCard from '../components/templates/TemplateCard';
 import { TEMPLATE_DATA } from '../data/templatesData';
 
@@ -44,8 +42,6 @@ export default function Templates() {
 
   return (
     <>
-      <Header />
-      
       <main>
         {/* Consistent Hero Spacing matching Home.jsx */}
         <section className="section hero text-center" id="templates-hero">
@@ -131,8 +127,6 @@ export default function Templates() {
         </section>
 
       </main>
-
-      <Footer />
     </>
   );
 }
