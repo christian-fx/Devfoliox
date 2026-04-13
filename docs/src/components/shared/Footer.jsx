@@ -55,7 +55,7 @@ export default function Footer() {
               <li><Link to="/documentation" className={activeClass('/documentation')}>Documentation</Link></li>
               <li><Link to="/documentation/quickstart" className={activeClass('/documentation/quickstart')}>Quick Start</Link></li>
               <li><Link to="/documentation/commands" className={activeClass('/documentation/commands')}>CLI Reference</Link></li>
-              <li><Link to="/documentation/api" className={activeClass('/documentation/api')}>GitHub API Setup</Link></li>
+              <li><Link to="/faq" className={activeClass('/faq')}>FAQ</Link></li>
             </ul>
           </div>
           <div className="footer-col">

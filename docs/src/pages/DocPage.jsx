@@ -95,6 +95,48 @@ export default function DocPage() {
           ) : <div style={{ flex: 1 }} />}
         </nav>
       )}
+      <style>
+        {`
+          .doc-metadata-link {
+            transition: color 0.2s ease, transform 0.2s ease;
+          }
+          .doc-metadata-link:hover {
+            color: var(--primary) !important;
+            transform: translateX(4px);
+          }
+        `}
+      </style>
+      
+      {/* Footer Metadata */}
+      {!loading && (
+        <div style={{ marginTop: '64px', paddingTop: '24px', borderTop: '1px solid var(--border)', opacity: 0.8, fontSize: '13px', display: 'flex', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
+            <a 
+              href={`https://github.com/christian-fx/Devfolio/blob/main/docs/src/content/docs/${slug}.md`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="doc-metadata-link"
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--muted-foreground)', textDecoration: 'none' }}
+            >
+              <iconify-icon icon="lucide:github" style={{ fontSize: '16px' }}></iconify-icon>
+              View on GitHub
+            </a>
+            <a 
+              href={`https://github.com/christian-fx/Devfolio/edit/main/docs/src/content/docs/${slug}.md`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="doc-metadata-link"
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--muted-foreground)', textDecoration: 'none' }}
+            >
+              <iconify-icon icon="lucide:pencil" style={{ fontSize: '16px' }}></iconify-icon>
+              Edit this page
+            </a>
+          </div>
+          <span style={{ color: 'var(--muted-foreground)' }}>
+            Last updated: {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

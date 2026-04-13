@@ -6,6 +6,7 @@ import DocPage from './pages/DocPage';
 import Templates from './pages/Templates';
 import TemplateDetails from './pages/TemplateDetails';
 import Showcase from './pages/Showcase';
+import FAQ from './pages/FAQ';
 import ScrollManager from './components/shared/ScrollManager';
 import Header from './components/shared/Header';
 import Footer from './components/shared/Footer';
@@ -51,6 +52,7 @@ function App() {
               <Route index element={<Navigate to="/documentation/introduction" replace />} />
               <Route path=":slug" element={<DocPage />} />
             </Route>
+            <Route path="/faq" element={<FAQ />} />
           </Routes>
         </main>
       </div>
