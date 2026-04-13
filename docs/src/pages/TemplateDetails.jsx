@@ -20,6 +20,15 @@ export default function TemplateDetails() {
 
   return (
     <>
+      <style>
+        {`
+          .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+            border-color: var(--primary) !important;
+          }
+        `}
+      </style>
       <main style={{ paddingBottom: '80px', marginTop: '64px' }}>
         
         {/* Breadcrumbs and Hero */}
@@ -48,7 +57,7 @@ export default function TemplateDetails() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '48px', maxWidth: '1000px', margin: '0 auto' }}>
               
               <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 24px 48px rgba(0,0,0,0.2)' }}>
-                <img src={template.image} alt={template.title} style={{ width: '100%', display: 'block' }} />
+                <img src={template.heroImage || template.image} alt={template.title} style={{ width: '100%', display: 'block' }} />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
@@ -84,6 +93,26 @@ export default function TemplateDetails() {
             </div>
           </div>
         </section>
+
+        {/* Gallery Section */}
+        {template.gallery && template.gallery.length > 0 && (
+          <section className="section" style={{ borderTop: '1px solid var(--border)', marginTop: '48px', paddingTop: '64px' }}>
+            <div className="container">
+              <div style={{ marginBottom: '40px' }}>
+                <h2 className="title-sm" style={{ marginBottom: '12px' }}>Visual Workspace</h2>
+                <p className="color-dim">A deep dive into the component architecture and layout patterns of this template.</p>
+              </div>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
+                {template.gallery.map((img, i) => (
+                  <div key={i} className="gallery-item" style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)', transition: 'transform 0.3s ease, box-shadow 0.3s ease' }}>
+                    <img src={img} alt={`${template.title} Gallery ${i + 1}`} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
       </main>
     </>

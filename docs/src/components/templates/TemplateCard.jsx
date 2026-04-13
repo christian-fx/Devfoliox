@@ -20,14 +20,46 @@ export default function TemplateCard({ template }) {
       display: 'flex', 
       flexDirection: 'column',
       transition: 'transform 0.2s ease',
+      opacity: template.isComingSoon ? 0.7 : 1,
+      pointerEvents: template.isComingSoon ? 'none' : 'auto',
+      position: 'relative'
     }}>
-      <div className="template-image-wrapper" onClick={() => navigate(`/templates/${template.id}`)} style={{ cursor: 'pointer', height: '240px', overflow: 'hidden', background: '#0d1117' }}>
+      {template.isComingSoon && (
+        <div style={{
+          position: 'absolute',
+          top: '12px',
+          right: '12px',
+          zIndex: 10,
+          background: 'var(--primary)',
+          color: 'white',
+          padding: '4px 12px',
+          borderRadius: '20px',
+          fontSize: '11px',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px'
+        }}>
+          <iconify-icon icon="lucide:clock" style={{ fontSize: '13px' }}></iconify-icon>
+          Coming Soon
+        </div>
+      )}
+      
+      <div className="template-image-wrapper" onClick={() => !template.isComingSoon && navigate(`/templates/${template.id}`)} style={{ cursor: template.isComingSoon ? 'default' : 'pointer', height: '240px', overflow: 'hidden', background: '#0d1117' }}>
         <img 
-          src={template.image} 
+          src={template.heroImage || template.image} 
           alt={template.title} 
-          style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} 
-          onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
-          onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          style={{ 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover', 
+            transition: 'transform 0.4s ease',
+            filter: template.isComingSoon ? 'grayscale(0.5) blur(1px)' : 'none'
+          }} 
+          onMouseOver={(e) => !template.isComingSoon && (e.currentTarget.style.transform = 'scale(1.03)')}
+          onMouseOut={(e) => !template.isComingSoon && (e.currentTarget.style.transform = 'scale(1)')}
         />
       </div>
       
@@ -46,7 +78,21 @@ export default function TemplateCard({ template }) {
         </div>
 
         <div className="template-actions" style={{ display: 'flex', gap: '12px', marginTop: '24px', borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
-          <button onClick={handleCopyCommand} className="btn btn-primary" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', padding: '8px 16px' }}>
+          <button 
+            disabled={template.isComingSoon}
+            onClick={handleCopyCommand} 
+            className="btn btn-primary" 
+            style={{ 
+              flex: 1, 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center', 
+              gap: '8px', 
+              padding: '8px 16px',
+              opacity: template.isComingSoon ? 0.5 : 1,
+              cursor: template.isComingSoon ? 'not-allowed' : 'pointer'
+            }}
+          >
             {copied ? (
               <>
                 <iconify-icon icon="lucide:check"></iconify-icon>
@@ -59,7 +105,18 @@ export default function TemplateCard({ template }) {
               </>
             )}
           </button>
-          <Link to={`/templates/${template.id}`} className="btn btn-secondary" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Link 
+            to={template.isComingSoon ? '#' : `/templates/${template.id}`} 
+            className="btn btn-secondary" 
+            style={{ 
+              flex: 1, 
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center',
+              opacity: template.isComingSoon ? 0.5 : 1,
+              pointerEvents: template.isComingSoon ? 'none' : 'auto'
+            }}
+          >
             Details
           </Link>
         </div>
