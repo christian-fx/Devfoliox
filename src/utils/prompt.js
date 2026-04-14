@@ -20,6 +20,18 @@ const runInteractiveGenerate = async () => {
         choices: ['minimal', 'modern'],
         default: 'minimal'
     });
+
+    // Guy see LOGIC: If they chose minimal, ask which version
+    // if (template === 'minimal' && stack === 'React.js') {
+    //     template = await select({
+    //         message: 'Which minimal style would you like?',
+    //         choices: [
+    //             { name: 'Light (Classic Serif)', value: 'minimal' },
+    //             { name: 'Dark (Modern Gold)', value: 'minimal-dark' }
+    //         ],
+    //         default: 'minimal'
+    //     });
+    // }
     return { username: username.trim(), template, stack };
 }
 

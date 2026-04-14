@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Define your custom colors here for v4 */
-  --color-brand: #38A28E;
-  --color-brand-dark: #2d8373;
-  --color-canvas: #F7F7F5;
-  --color-ink: #1A1A1A;
+  --color-brand: #0d9488;         /* Teal 600 */
+  --color-brand-dark: #0f172a;    /* Slate 900 */
+  --color-canvas: #f8fafc;        /* Slate 50 - Very light gray background */
+  --color-ink: #1e293b;           /* Slate 800 - Deep gray for readability */
   
-  /* Define your custom fonts here for v4 */
-  --font-serif: "Playfair Display", serif;
+  --color-accent: #6366f1;        /* Indigo 500 for the gradient effects */
+  --color-card: #ffffff;          /* Pure White for cards */
+  --color-muted: #64748b;         /* Slate 500 for descriptions */
+  --color-border: #f1f5f9;        /* Slate 100 for subtle dividers */
+
+  --font-serif: "Cormorant Garamond", serif;
   --font-sans: "Inter", sans-serif;
 }
 
 body {
-  /* Use the variable you just defined */
-  @apply bg-canvas text-ink antialiased;
+  @apply bg-canvas text-ink antialiased font-sans;
 }
 
 html {

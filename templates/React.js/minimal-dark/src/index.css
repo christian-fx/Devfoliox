@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  /* Modern Dark Gold & Black Theme for v4 */
+  --color-brand: #fbbf24;        /* The Gold/Amber 400 */
+  --color-brand-dark: #d97706;   /* Deep Amber for hovers */
+  --color-canvas: #0a0a0a;       /* Deep Black background */
+  --color-ink: #ffffff;         /* Pure White text */
+  
+  /* Additional UI Colors */
+  --color-card: #111111;        /* Slightly lighter for project cards */
+  --color-muted: #a1a1aa;       /* Zinc 400 for descriptions */
+  --color-border: #1f2937;      /* Gray 800 for subtle lines */
+
+  /* Modern Designer Fonts mapped to v4 variables */
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  /* This now uses the #0a0a0a and #ffffff variables */
+  @apply bg-canvas text-ink antialiased font-sans;
+}
+
+html {
+  scroll-behavior: smooth;
+}
