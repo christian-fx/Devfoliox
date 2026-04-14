@@ -121,13 +121,12 @@ export const TEMPLATE_DATA = [
     title: 'Next.js Minimal',
     description: 'Server-Side Rendered (SSR) typographic portfolio fetching GitHub APIs purely on the server for unparalleled SEO results.',
     bestFor: 'Full-stack developers who want a production-grade portfolio with the best possible SEO and PageSpeed Insights performance.',
-    image: '/images/minimal.png',
-    heroImage: '/images/templates/minimal-hero.png',
+    image: '/images/nextMinimal.png',
+    heroImage: '/images/nextMinimal.png',
     gallery: [
-      '/images/templates/minimal-1.png',
-      '/images/templates/minimal-2.png'
+      '/images/templates/nextMinimal1.png',
+      '/images/templates/nextMinimal2.png'
     ],
-    isComingSoon: true,
     command: 'npx devfolio generate your-github-handle --template minimal --stack Next.js',
     previewUrl: '#',
     stack: [
@@ -149,13 +148,13 @@ export const TEMPLATE_DATA = [
     title: 'Next.js Modern',
     description: 'The ultimate enterprise-grade layout. Server components mixed tightly with client-side Framer Motion aesthetics and vibrant glassmorphism.',
     bestFor: 'Enterprise-level engineers who want to demonstrate their proficiency with the React/Next.js ecosystem and high-end creative coding.',
-    image: '/images/modern.png',
-    heroImage: '/images/templates/modern-hero.png',
+    image: '/images/nextModern.png',
+    heroImage: '/images/nextModern.png',
     gallery: [
-      '/images/templates/modern-1.png',
-      '/images/templates/modern-2.png'
+      '/images/templates/nextModern1.png',
+      '/images/templates/nextModern2.png',
+      '/images/templates/nextModern3.png'
     ],
-    isComingSoon: true,
     command: 'npx devfolio generate your-github-handle --template modern --stack Next.js',
     previewUrl: '#',
     stack: [

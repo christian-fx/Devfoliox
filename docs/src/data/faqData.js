@@ -30,7 +30,7 @@ export const FAQ_DATA = [
       {
         id: 'supported-stacks',
         question: 'What technology stacks are supported?',
-        answer: 'We currently support **Vanilla JS**, **React.js** (Vite-based), and have high-performance **Next.js** templates currently in development ("Coming Soon").'
+        answer: 'We currently support **Vanilla JS**, **React.js** (Vite-based), and high-performance **Next.js** templates using the latest App Router architecture.'
       }
     ]
   },

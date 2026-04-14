@@ -1,1 +1,1 @@
-export const config = { githubUsername: "octocat" };
+export const GITHUB_USERNAME = "octocat";

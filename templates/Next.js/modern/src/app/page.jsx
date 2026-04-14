@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { getGitHubData } from "../services/github";
-import { config } from "../config";
+import { GITHUB_USERNAME } from "../config";
 import Stats from "../components/Stats";
 import Header from "../components/Header";
 import Projects from "../components/Projects";
@@ -60,8 +60,8 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       try {
-        if (config.githubUsername && config.githubUsername !== "placeholder") {
-          setUserData(await getGitHubData(config.githubUsername));
+        if (GITHUB_USERNAME && GITHUB_USERNAME !== "placeholder") {
+          setUserData(await getGitHubData(GITHUB_USERNAME));
         } else {
           setError(
             "GitHub username not configured — check config.js in the root template directory.",

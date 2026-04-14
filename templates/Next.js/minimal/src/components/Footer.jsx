@@ -11,7 +11,7 @@ export default function Footer({ profile }) {
         rel="noreferrer"
         className="text-[10px] text-slate-300 hover:text-slate-400 transition-colors uppercase tracking-widest block mt-4"
       >
-        Powered by Devfolio
+        Built with Devfolio
       </a>
     </footer>
   );
