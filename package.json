@@ -4,7 +4,7 @@
   "description": "Generate a developer portfolio from your GitHub profile in one command",
   "main": "src/index.js",
   "bin": {
-    "devfolio": "./bin/devfolio.js"
+    "devfolio": "bin/devfolio.js"
   },
   "files": [
     "bin",
@@ -27,5 +27,21 @@
     "chalk": "^5.6.2",
     "commander": "^14.0.3",
     "fs-extra": "^11.3.4"
-  }
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christian-fx/Devfolio.git"
+  },
+  "author": "",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/christian-fx/Devfolio/issues"
+  },
+  "homepage": "https://github.com/christian-fx/Devfolio#readme"
 }

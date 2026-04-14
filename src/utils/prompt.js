@@ -8,7 +8,11 @@ const runInteractiveGenerate = async () => {
     });
     const stack = await select({
         message: 'Choose a tech stack:',
-        choices: ['Vanilla (HTML/CSS/JS)', 'React.js', 'Next.js'],
+        choices: [
+            { name: 'Vanilla (HTML/CSS/JS)', value: 'Vanilla' },
+            { name: 'React.js', value: 'React.js' },
+            { name: 'Next.js', value: 'Next.js' }
+        ],
         default: 'React.js'
     });
     const template = await select({

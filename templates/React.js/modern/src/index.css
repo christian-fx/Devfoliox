@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Warm dark palette — totally distinct from minimal's teal ── */
+  --color-bg:          #0c0a09;
+  --color-surface:     #161210;
+  --color-surface-2:   #1e1916;
+  --color-surface-3:   #272220;
+  --color-border:      #2e2926;
+  --color-border-hover:#403830;
+
+  --color-text-1: #faf5f0;
+  --color-text-2: #9a8f87;
+  --color-text-3: #524740;
+
+  /* Electric orange accent — nothing like minimal's teal */
+  --color-accent:         #f97316;
+  --color-accent-light:   #fb923c;
+  --color-accent-dim:     rgba(249, 115, 22, 0.12);
+  --color-accent-border:  rgba(249, 115, 22, 0.28);
+  --color-accent-glow:    rgba(249, 115, 22, 0.08);
+
+  --font-display: "Syne", sans-serif;
+  --font-body:    "Space Grotesk", sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text-1);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--color-accent); color: #000; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-surface-3); border-radius: 4px; }
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 26s linear infinite; }
+.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+/* Nav link */
+.nav-link {
+  font-size: 14px; color: var(--color-text-2);
+  text-decoration: none; transition: color 0.2s;
+  position: relative;
+}
+.nav-link::after {
+  content: ""; position: absolute;
+  bottom: -2px; left: 0; right: 0; height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0); transition: transform 0.25s;
+  transform-origin: left;
+}
+.nav-link:hover { color: var(--color-text-1); }
+.nav-link:hover::after { transform: scaleX(1); }
+
+/* Buttons */
+.btn-accent {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 10px;
+  background: var(--color-accent); color: #000;
+  font-family: var(--font-body); font-weight: 700; font-size: 14px;
+  text-decoration: none; transition: background 0.2s, transform 0.2s;
+}
+.btn-accent:hover { background: var(--color-accent-light); transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 10px;
+  background: transparent; border: 1px solid var(--color-border);
+  color: var(--color-text-1); font-family: var(--font-body);
+  font-weight: 500; font-size: 14px; text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.btn-ghost:hover { border-color: var(--color-border-hover); background: var(--color-surface-2); transform: translateY(-1px); }
+
+/* Stat card */
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  transition: border-color 0.22s;
+}
+.stat-card:hover { border-color: var(--color-border-hover); }
+
+/* Project card */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+.card:hover {
+  border-color: var(--color-accent-border);
+  background: var(--color-surface-2);
+  box-shadow: 0 0 0 1px var(--color-accent-border), 0 8px 32px rgba(0,0,0,0.35);
+  transform: translateY(-3px);
+}
+
+/* Skill chip */
+.skill-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-2);
+  font-family: var(--font-mono); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.skill-chip:hover {
+  border-color: var(--color-accent-border);
+  color: var(--color-accent); background: var(--color-accent-dim);
+}
+
+/* Filter buttons */
+.filter-btn {
+  padding: 6px 14px; border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: transparent; color: var(--color-text-2);
+  font-family: var(--font-mono); font-size: 12px;
+  cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em;
+}
+.filter-btn:hover { border-color: var(--color-border-hover); color: var(--color-text-1); }
+.filter-btn.active {
+  background: var(--color-accent-dim);
+  border-color: var(--color-accent-border);
+  color: var(--color-accent);
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+
+/* CTA strip */
+.cta-strip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  position: relative; overflow: hidden;
+}
+.cta-strip::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(249,115,22,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Skeleton */
+@keyframes sk {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.6; }
+}
+.skeleton {
+  background: var(--color-surface-2);
+  border-radius: 8px;
+  animation: sk 1.7s ease-in-out infinite;
+}
+
+/* Availability pulse */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(249,115,22,0.5); }
+  50%       { opacity: 0.7; box-shadow: 0 0 0 5px rgba(249,115,22,0); }
+}
+.pulse-dot { animation: pulse-dot 2.4s ease-in-out infinite; }
+
+/* Language dot color mapping (visual variety) */
+.lang-dot-js    { background: #f7df1e; }
+.lang-dot-ts    { background: #3178c6; }
+.lang-dot-py    { background: #3572A5; }
+.lang-dot-html  { background: #e34c26; }
+.lang-dot-css   { background: #563d7c; }
+.lang-dot-java  { background: #b07219; }
+.lang-dot-go    { background: #00add8; }
+.lang-dot-rust  { background: #dea584; }
+.lang-dot-cpp   { background: #f34b7d; }
+.lang-dot-rb    { background: #701516; }
+.lang-dot-default { background: var(--color-accent); }

@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Devfolio - GitHub-Powered Developer Portfolios</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+
+  <style>
+    :root {
+      --background: #ffffff;
+      --foreground: #0a0a0a;
+      --border: #bdbdbd;
+      --input: #f7f7f7;
+      --primary: #000000;
+      --primary-foreground: #ffffff;
+      --secondary: #f2f2f2;
+      --secondary-foreground: #3a3a3a;
+      --muted: #fafafa;
+      --muted-foreground: #9b9b9b;
+      --success: #e6f3ea;
+      --success-foreground: #2b7a3a;
+      --accent: #d9d9d9;
+      --accent-foreground: #2b2b2b;
+      --destructive: #ffffff;
+      --destructive-foreground: #404040;
+      --warning: #fff7e6;
+      --warning-foreground: #8a5a00;
+      --card: #ffffff;
+      --card-foreground: #111111;
+      --sidebar: #ffffff;
+      --sidebar-foreground: #3f3f3f;
+      --sidebar-primary: #595959;
+      --sidebar-primary-foreground: #ffffff;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-xl: 48px;
+      --font-family-body: 'Shantell Sans', sans-serif;
+      
+      /* Fluid spacing scale */
+      --space-xs: clamp(0.5rem, 0.5rem + 0vw, 0.5rem);
+      --space-sm: clamp(0.75rem, 0.7rem + 0.25vw, 1rem);
+      --space-md: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+      --space-lg: clamp(1.5rem, 1.3rem + 1vw, 2.5rem);
+      --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+      --space-2xl: clamp(3rem, 2rem + 5vw, 8rem);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-family-body);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font-family: var(--font-family-body);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      width: 100%;
+    }
+
+    .section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .section-light {
+      background-color: var(--muted);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      background-color: var(--secondary);
+      color: var(--secondary-foreground);
+      border-radius: var(--radius-xl);
+      font-size: clamp(12px, 2vw, 13px);
+      font-weight: 500;
+      margin-bottom: var(--space-md);
+      white-space: nowrap;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    /* Fluid Typography */
+    .title-lg {
+      font-size: clamp(32px, 8vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+      word-wrap: break-word;
+    }
+
+    .title-md {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-sm);
+    }
+
+    .subtitle {
+      font-size: clamp(16px, 3vw, 20px);
+      color: var(--muted-foreground);
+      max-width: min(680px, 90%);
+      margin: 0 auto var(--space-lg) auto;
+      line-height: 1.6;
+      padding: 0 var(--space-sm);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-size: clamp(14px, 2vw, 15px);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: none;
+      font-family: var(--font-family-body);
+      touch-action: manipulation;
+      min-height: 44px;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .btn-primary:hover {
+      background-color: #333;
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: var(--secondary-foreground);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--accent);
+    }
+
+    /* Header & Navigation */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: clamp(16px, 4vw, 18px);
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(16px, 3vw, 32px);
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      cursor: pointer;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--foreground);
+    }
+
+    .nav-link-active {
+      color: var(--foreground);
+    }
+
+    .nav-link-active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--foreground);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: clamp(80px, 15vw, 140px) 0 clamp(60px, 10vw, 80px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.2;
+      z-index: -1;
+      mask-image: radial-gradient(circle at center, black, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+      animation: gridPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.25; }
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: var(--space-xl);
+      flex-wrap: wrap;
+      padding: 0 var(--space-sm);
+    }
+
+    /* Terminal Mockup */
+    .terminal-mockup {
+      max-width: min(800px, 95%);
+      margin: 0 auto;
+      background-color: #0d1117;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+      text-align: left;
+      transform: translateY(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .terminal-mockup:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2);
+    }
+
+    .terminal-header {
+      background-color: #161b22;
+      padding: 12px 16px;
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid #30363d;
+      align-items: center;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .terminal-dot.red    { background-color: #ff5f56; }
+    .terminal-dot.yellow { background-color: #ffbd2e; }
+    .terminal-dot.green  { background-color: #27c93f; }
+
+    .terminal-body {
+      padding: clamp(16px, 4vw, 24px);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: clamp(12px, 2.5vw, 14px);
+      color: #c9d1d9;
+      line-height: 1.6;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .terminal-line { 
+      margin-bottom: 8px; 
+      white-space: nowrap;
+    }
+    
+    .terminal-line.wrap {
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .color-prompt    { color: #58a6ff; font-weight: 600; }
+    .color-command   { color: #f0f6fc; }
+    .color-success   { color: #3fb950; }
+    .color-dim       { color: #8b949e; }
+    .color-highlight { color: #d2a8ff; }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: clamp(20px, 3vw, 32px);
+      margin-top: var(--space-xl);
+    }
+
+    .feature-card {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 5vw, 32px);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background-color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover .feature-icon-wrapper {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-title {
+      font-size: clamp(18px, 3vw, 20px);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      color: var(--muted-foreground);
+      font-size: clamp(14px, 2vw, 15px);
+      line-height: 1.6;
+    }
+
+    /* Workflow Section */
+    .workflow-container {
+      display: flex;
+      align-items: stretch;
+      gap: clamp(32px, 5vw, 48px);
+      margin-top: var(--space-xl);
+      flex-wrap: wrap;
+    }
+
+    .workflow-steps {
+      flex: 1;
+      min-width: min(100%, 300px);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .workflow-step {
+      display: flex;
+      gap: clamp(16px, 3vw, 24px);
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-content h3 {
+      font-size: clamp(18px, 3vw, 20px);
+      font-weight: 600;
+      margin-bottom: 8px;
+      margin-top: 6px;
+    }
+
+    .step-content p {
+      color: var(--muted-foreground);
+      font-size: clamp(14px, 2vw, 15px);
+      line-height: 1.6;
+    }
+
+    .workflow-visual {
+      flex: 1;
+      min-width: min(100%, 300px);
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 4vw, 32px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+
+    .profile-card {
+      background-color: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+
+    .profile-header {
+      height: clamp(80px, 15vw, 120px);
+      background: linear-gradient(135deg, var(--muted) 0%, var(--accent) 100%);
+      position: relative;
+    }
+
+    .profile-body {
+      padding: clamp(16px, 4vw, 24px);
+      text-align: center;
+      margin-top: -40px;
+      position: relative;
+    }
+
+    .profile-avatar {
+      width: clamp(60px, 12vw, 80px);
+      height: clamp(60px, 12vw, 80px);
+      border-radius: 50%;
+      border: 4px solid var(--background);
+      margin: 0 auto 16px;
+      background-color: var(--secondary);
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .profile-name {
+      font-size: clamp(16px, 3vw, 18px);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .profile-bio {
+      color: var(--muted-foreground);
+      font-size: clamp(13px, 2vw, 14px);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .profile-tags {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .profile-tag {
+      padding: 4px 10px;
+      background-color: var(--secondary);
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .profile-tag:hover {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: var(--space-2xl) 0;
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(255,255,255,0.03) 0%, transparent 50%);
+      animation: ctaPulse 10s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .cta-shell {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-panel {
+      text-align: center;
+    }
+
+    .cta-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--radius-xl);
+      background-color: rgba(255, 255, 255, 0.12);
+      color: var(--primary-foreground);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: var(--space-md);
+      white-space: nowrap;
+      backdrop-filter: blur(4px);
+    }
+
+    .cta-title {
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: var(--primary-foreground);
+    }
+
+    .cta-text {
+      max-width: 620px;
+      margin: 0 auto var(--space-lg) auto;
+      font-size: clamp(16px, 3vw, 18px);
+      line-height: 1.6;
+      color: var(--primary-foreground);
+      opacity: 0.84;
+      padding: 0 var(--space-sm);
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: var(--space-sm);
+    }
+
+    .btn-cta-light {
+      background-color: var(--background);
+      color: var(--foreground);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-cta-light:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .btn-cta-dark {
+      background-color: transparent;
+      color: var(--primary-foreground);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-cta-dark:hover {
+      background-color: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    .cta-note {
+      margin-top: var(--space-md);
+      font-size: 14px;
+      color: var(--primary-foreground);
+      opacity: 0.72;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: var(--space-xl) 0 var(--space-lg) 0;
+      background-color: var(--background);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: clamp(32px, 5vw, 64px);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: var(--space-md);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--foreground);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted-foreground);
+      font-size: 14px;
+      transition: color 0.2s;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--foreground);
+      transform: translateX(4px);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border);
+      color: var(--muted-foreground);
+      font-size: 14px;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-links a {
+      transition: transform 0.2s, color 0.2s;
+      display: inline-flex;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      color: var(--foreground);
+    }
+
+    /* Mobile Navigation Overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 99;
+      padding: var(--space-lg);
+      flex-direction: column;
+      gap: var(--space-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav .nav-link {
+      font-size: 24px;
+      font-weight: 600;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--border);
+      width: 100%;
+    }
+
+    .mobile-nav .btn {
+      margin-top: var(--space-md);
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .footer-col:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        height: 60px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .header-actions .btn-secondary {
+        display: none;
+      }
+
+      .workflow-container {
+        flex-direction: column;
+      }
+
+      .workflow-visual {
+        order: -1;
+      }
+
+      .terminal-body {
+        font-size: 12px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        text-align: center;
+        align-items: center;
+      }
+
+      .feature-icon-wrapper {
+        margin-bottom: var(--space-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 var(--space-md);
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .cta-actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 var(--space-md);
+      }
+
+      .cta-actions .btn {
+        width: 100%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .workflow-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .step-content h3 {
+        margin-top: 0;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .header, .hero-bg-grid, .cta-section, .footer {
+        display: none;
+      }
+      
+      .section {
+        padding: 20px 0;
+        page-break-inside: avoid;
+      }
+    }
+
+    /* Focus Styles for Accessibility */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Selection Color */
+    ::selection {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="logo">
+        <iconify-icon icon="lucide:terminal" style="font-size: 24px;"></iconify-icon>
+        Devfolio
+      </div>
+      
+      <nav class="nav-links">
+        <a class="nav-link nav-link-active" href="#">Overview</a>
+        <a class="nav-link" href="#">Templates</a>
+        <a class="nav-link" href="#">Show Case</a>
+        <a class="nav-link" href="#">Documentation</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;">
+          <iconify-icon icon="lucide:github" style="font-size: 16px; margin-right: 6px;"></iconify-icon>
+          Star on GitHub
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <iconify-icon icon="lucide:menu" style="font-size: 24px;" id="menuIcon"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileNav">
+    <a class="nav-link nav-link-active" href="#overview">Overview</a>
+    <a class="nav-link" href="#features">Templates</a>
+    <a class="nav-link" href="#workflow">Showcase</a>
+    <a class="nav-link" href="#docs">Documentation</a>
+    <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+      <iconify-icon icon="lucide:github" style="font-size: 18px; margin-right: 8px;"></iconify-icon>
+      Star on GitHub
+    </button>
+  </div>
+
+  <!-- Hero -->
+  <section class="section hero text-center" id="overview">
+    <div class="hero-bg-grid"></div>
+    <div class="container">
+      <div class="badge">
+        <span style="color: var(--primary); margin-right: 8px; font-weight: 700;">New</span>
+        Devfolio v2.0 with Framer Motion
+        <iconify-icon icon="lucide:arrow-right" style="font-size: 14px; margin-left: 4px;"></iconify-icon>
+      </div>
+
+      <h1 class="title-lg">
+        The GitHub-powered<br />developer portfolio.
+      </h1>
+
+      <p class="subtitle">
+        A Node.js CLI tool that scaffolds a fully functional, stunning developer portfolio
+        in one command. Fetches live data from GitHub to keep your site always up-to-date automatically.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary">
+          <iconify-icon icon="lucide:terminal-square" style="font-size: 18px; margin-right: 8px;"></iconify-icon>
+          Get Started
+        </button>
+        <button class="btn btn-secondary">View Documentation</button>
+      </div>
+
+      <div class="terminal-mockup">
+        <div class="terminal-header">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="color-prompt">➜</span>
+            <span class="color-dim"> ~</span>
+            <span class="color-command"> npx create-devfolio@latest my-portfolio</span>
+          </div>
+          <div class="terminal-line color-dim">
+            ? GitHub username: <span class="color-highlight">octocat</span>
+          </div>
+          <div class="terminal-line color-dim">
+            ? Template: <span class="color-highlight">Modern Dark</span>
+          </div>
+          <br />
+          <div class="terminal-line color-success">✔ Fetched profile (14 repos, bio, avatar)</div>
+          <div class="terminal-line color-success">✔ Scaffolded files & Vite config</div>
+          <div class="terminal-line color-success">✔ Dependencies installed</div>
+          <br />
+          <div class="terminal-line wrap">
+            <span class="color-highlight">Success!</span> Created my-portfolio
+          </div>
+          <div class="terminal-line color-dim">Run: npm run dev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section section-light" id="features">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="title-md">Everything you need for a modern portfolio</h2>
+        <p class="subtitle">
+          Built with the modern web stack to ensure your portfolio is fast, customizable, and always relevant.
+        </p>
+      </div>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <iconify-icon icon="lucide:github" style="font-size: 24px;"></iconify-icon>
+          </div>
+          <h3 class="feature-title">Live GitHub Integration</h3>
+          <p class="feature-desc">Automatically fetches your public repositories, star counts, primary languages, bio, and profile picture directly from the GitHub API.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <iconify-icon icon="lucide:layout-template" style="font-size: 24px;"></iconify-icon>
+          </div>
+          <h3 class="feature-title">Multiple Templates</h3>
+          <p class="feature-desc">Choose from professionally designed, production-ready templates. From minimal single-page layouts to complex multi-page portfolios.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <iconify-icon icon="lucide:wind" style="font-size: 24px;"></iconify-icon>
+          </div>
+          <h3 class="feature-title">Tailwind CSS Styling</h3>
+          <p class="feature-desc">Fully styled with Tailwind CSS, making it incredibly easy to customize colors, typography, and layouts to match your personal brand.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <iconify-icon icon="lucide:zap" style="font-size: 24px;"></iconify-icon>
+          </div>
+          <h3 class="feature-title">Vite Powered</h3>
+          <p class="feature-desc">Built on top of Vite for lightning-fast HMR during development and highly optimized static builds for deployment.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <iconify-icon icon="lucide:move" style="font-size: 24px;"></iconify-icon>
+          </div>
+          <h3 class="feature-title">Framer Motion</h3>
+          <p class="feature-desc">Optional Framer Motion integration for smooth page transitions, scroll animations, and interactive elements right out of the box.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <iconify-icon icon="lucide:rocket" style="font-size: 24px;"></iconify-icon>
+          </div>
+          <h3 class="feature-title">Deploy Anywhere</h3>
+          <p class="feature-desc">Generates a standard static site that can be deployed for free to Vercel, Netlify, GitHub Pages, or any static hosting provider.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section" id="workflow">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="title-md">Zero to Portfolio in 60 seconds</h2>
+        <p class="subtitle">No manual data entry. No complex configuration. Just run the command and deploy.</p>
+      </div>
+      <div class="workflow-container">
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Run the CLI command</h3>
+              <p>Execute the creation script via your terminal. It will prompt you for your GitHub username and preferred template.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Data is fetched automatically</h3>
+              <p>Devfolio connects to the GitHub API, pulling down your pinned repositories, contribution stats, bio, and avatar instantly.</p>
+            </div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Customize and Deploy</h3>
+              <p>Tweak the generated Tailwind classes or modify the React components. Push to GitHub and connect to Vercel for instant deployment.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-visual">
+          <div class="profile-card">
+            <div class="profile-header"></div>
+            <div class="profile-body">
+              <img
+                src="https://storage.googleapis.com/banani-avatars/avatar%2Fmale%2F25-35%2FEuropean%2F4"
+                alt="Developer Avatar"
+                class="profile-avatar"
+                loading="lazy"
+              />
+              <h4 class="profile-name">Alex Developer</h4>
+              <p class="profile-bio">
+                Full-stack engineer building tools for the modern web. Open source enthusiast.
+              </p>
+              <div class="profile-tags">
+                <span class="profile-tag">React</span>
+                <span class="profile-tag">Node.js</span>
+                <span class="profile-tag">TypeScript</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="showcase">
+    <div class="cta-shell">
+      <div class="cta-panel">
+        <div class="cta-eyebrow">
+          <iconify-icon icon="lucide:sparkles" style="font-size: 14px;"></iconify-icon>
+          Ready to launch your portfolio?
+        </div>
+        <h2 class="cta-title">Ship a live developer portfolio in one command.</h2>
+        <p class="cta-text">
+          Generate a production-ready site, pull in your latest GitHub data automatically, and customize it
+          with templates powered by Tailwind, Vite, and optional Framer Motion.
+        </p>
+        <div class="cta-actions">
+          <button class="btn btn-cta-light">
+            <iconify-icon icon="lucide:terminal-square" style="font-size: 18px; margin-right: 8px;"></iconify-icon>
+            Get Started Now
+          </button>
+          <button class="btn btn-cta-dark">Read the Docs</button>
+        </div>
+        <p class="cta-note">Free, open source, and deploys in minutes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 16px;">
+            <iconify-icon icon="lucide:terminal" style="font-size: 24px;"></iconify-icon>
+            Devfolio
+          </div>
+          <p style="color: var(--muted-foreground); font-size: 14px; line-height: 1.6; max-width: 280px;">
+            The fastest way to build and deploy a developer portfolio powered by your live GitHub data.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#templates">Templates</a></li>
+            <li><a href="#showcase">Showcase</a></li>
+            <li><a href="#releases">Releases</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#docs">Documentation</a></li>
+            <li><a href="#quickstart">Quick Start</a></li>
+            <li><a href="#cli">CLI Reference</a></li>
+            <li><a href="#api">GitHub API Setup</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul class="footer-links">
+            <li><a href="#discussions">GitHub Discussions</a></li>
+            <li><a href="#discord">Discord Server</a></li>
+            <li><a href="#twitter">Twitter / X</a></li>
+            <li><a href="#contribute">Contribute</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2025 Devfolio Open Source. MIT License.</div>
+        <div class="social-links">
+          <a href="#" aria-label="GitHub">
+            <iconify-icon icon="lucide:github" style="font-size: 20px;"></iconify-icon>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <iconify-icon icon="lucide:twitter" style="font-size: 20px;"></iconify-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const menuIcon = document.getElementById('menuIcon');
+    let isMenuOpen = false;
+
+    mobileMenuBtn.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      mobileNav.classList.toggle('active', isMenuOpen);
+      menuIcon.setAttribute('icon', isMenuOpen ? 'lucide:x' : 'lucide:menu');
+      document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    });
+
+    // Close mobile menu when clicking on links
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        isMenuOpen = false;
+        mobileNav.classList.remove('active');
+        menuIcon.setAttribute('icon', 'lucide:menu');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe feature cards and workflow steps
+    document.querySelectorAll('.feature-card, .workflow-step').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

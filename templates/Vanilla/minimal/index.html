@@ -6,59 +6,130 @@
     <title>Portfolio | Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loading State -->
+    <div id="loading-overlay">
+        <div class="loader"></div>
+        <p>Fetching architectural data...</p>
+    </div>
 
-    <nav>
-        <span id="nav-logo">—</span>
-        <div class="nav-links">
-            <a href="#projects">Work</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-overlay">
+        <button id="close-menu" class="icon-btn">
+            <iconify-icon icon="lucide:x"></iconify-icon>
+        </button>
+        <nav class="mobile-links">
+            <a href="#about-section" class="mobile-link">About</a>
+            <a href="#tech-stack-section" class="mobile-link">Tech Stack</a>
+            <a href="#selected-works-section" class="mobile-link">Works</a>
+            <a href="#cta-section" class="mobile-link">Contact</a>
+        </nav>
+    </div>
 
-    <main>
-        <section id="about" class="hero">
-            <div class="hero-left">
-                <img id="user-avatar" src="" alt="Avatar" loading="lazy">
-            </div>
-            <div class="hero-right">
-                <h1 id="user-name">Loading</h1>
-                <p id="user-bio" class="bio">—</p>
-                <div class="stats">
-                    <div class="stat">
-                        <strong id="repo-count">0</strong>
-                        <span>repos</span>
-                    </div>
-                    <div class="stat">
-                        <strong id="follower-count">0</strong>
-                        <span>followers</span>
-                    </div>
-                    <div class="stat">
-                        <strong id="following-count">0</strong>
-                        <span>following</span>
-                    </div>
+    <main class="minimal-container" id="portfolio-page">
+        <header id="top-header">
+            <div class="brand">
+                <div class="brand-name" id="nav-name">
+                    <span class="full-name">Developer</span>
+                    <span class="abbr-name">D.</span>
                 </div>
             </div>
+            <nav class="header-links" id="site-nav">
+                <a href="#about-section" class="header-link">About</a>
+                <a href="#tech-stack-section" class="header-link">Tech Stack</a>
+                <a href="#selected-works-section" class="header-link">Works</a>
+                <a href="#cta-section" class="header-link">Contact</a>
+            </nav>
+            <button id="menu-toggle" class="icon-btn mobile-only">
+                <iconify-icon icon="lucide:menu"></iconify-icon>
+            </button>
+        </header>
+
+        <header class="header" id="hero-header">
+            <div class="avatar-wrapper">
+                <img src="" alt="Avatar" class="avatar" id="user-avatar">
+                <div class="availability-dot" title="Available for hire"></div>
+            </div>
+
+            <div class="profile-info">
+                <h1 class="name" id="user-name">Loading...</h1>
+                <p class="bio" id="user-bio">Architecting digital experiences.</p>
+            </div>
+
+            <div class="meta-links" id="meta-links">
+                <!-- Dynamic Meta Links -->
+            </div>
+        </header>
+
+        <section class="about" id="about-section">
+            <h2 class="section-title">About</h2>
+            <div class="about-text">
+                <p>
+                    I’m a full-stack developer specializing in building fast,
+                    reliable, and production-ready applications across web and mobile
+                    platforms. I enjoy taking complex problems and turning them into
+                    clean, functional digital experiences.
+                </p>
+                <p>
+                    Currently focused on scalable architecture, developer experience,
+                    and crafting user interfaces that feel effortless to use. Always
+                    open to discussing new projects and technical challenges.
+                </p>
+            </div>
         </section>
 
-        <section id="projects">
-            <p class="section-label">Selected work</p>
-            <div id="project-list" class="project-list"></div>
+        <section id="tech-stack-section">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="stack-grid" id="stack-container">
+                <!-- Dynamic Progress Bars -->
+            </div>
         </section>
 
-        <section id="contact" class="contact">
-            <p class="section-label">Contact</p>
-            <a id="contact-btn" href="mailto:hello@example.com" class="contact-link">Get in touch →</a>
+        <section class="repos" id="selected-works-section">
+            <div class="repos-header">
+                <h2 class="section-title">Selected Works</h2>
+                <div id="repo-filters" class="filters-container">
+                    <!-- Dynamic Filters -->
+                </div>
+            </div>
+            <div class="repo-list" id="project-list">
+                <!-- Dynamic Repo Items -->
+            </div>
+            <div class="view-more-container">
+                <a href="#" id="view-more-github" target="_blank" class="view-more-link">
+                    View more on GitHub
+                    <iconify-icon icon="lucide:arrow-up-right"></iconify-icon>
+                </a>
+            </div>
         </section>
+
+        <div class="cta-section" id="cta-section">
+            <div class="cta-text">
+                <h3>Let's build together</h3>
+                <p>Currently available for freelance and full-time opportunities.</p>
+            </div>
+            <a href="mailto:hello@example.com" id="contact-link" class="btn-primary">
+                Get in touch
+                <iconify-icon icon="lucide:arrow-right"></iconify-icon>
+            </a>
+        </div>
+
+        <footer class="footer" id="site-footer">
+            <div id="footer-copyright">© 2026 Developer.</div>
+            <div class="watermark">
+                <a href="https://github.com/christian-fx/Devfolio" target="_blank" rel="noreferrer">Built with Devfolio</a>
+            </div>
+            <div class="footer-links">
+                <a href="#" id="footer-twitter" class="footer-link">Twitter</a>
+                <a href="#" id="footer-linkedin" class="footer-link">LinkedIn</a>
+                <a href="#" id="footer-github" class="footer-link">GitHub</a>
+            </div>
+        </footer>
     </main>
-
-    <footer>
-        <span id="footer-name">Developer</span>
-        <span>Built with Devfolio</span>
-    </footer>
 
     <script src="js/config.js"></script>
     <script src="script.js"></script>
