@@ -1,5 +1,8 @@
 # Introduction
 
+> [!IMPORTANT]
+> **Devfolio is currently in early access.** We haven't published the package to the official npm registry yet (Coming Soon). For now, please follow the [Installation](installation) guide to clone the repository and run the CLI tool locally.
+
 Devfolio is a powerful IDE/CLI tool that generates stunning developer portfolios powered by your live GitHub data. Learn how to scaffold, customize, and deploy your portfolio in minutes.
 
 ## What is Devfolio?

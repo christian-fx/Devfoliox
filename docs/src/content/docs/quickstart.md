@@ -1,18 +1,25 @@
 # Quick Start
 
+> [!IMPORTANT]
+> **Devfolio is currently in early access.** We haven't published the package to the official npm registry yet (Coming Soon). For now, please clone the repository to run the CLI tool locally.
+
 Get your portfolio running locally in under 5 minutes with our step-by-step interactive guide.
 
 ## Prerequisites
 Before you begin, ensure you have the following installed on your machine:
 * **Node.js** (v18.0.0 or higher)
 * **npm** or **yarn** or **pnpm**
+* **Git**
 * A valid GitHub account holding public repositories.
 
-## 1. Run the Initialization CLI
+## 1. Clone and Run the CLI
 
-Open your terminal and run the standard npx command. This fetches the most recent stable release of Devfolio directly from the npm registry.
+Since Devfolio is not yet on npm, you need to clone the repository and run it locally.
 
 ```bash
+git clone https://github.com/christian-fx/Devfolio.git
+cd Devfolio
+npm install
 npx devfolio init
 ```
 

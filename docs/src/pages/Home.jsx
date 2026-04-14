@@ -68,6 +68,16 @@ export default function Home() {
                 <div className="terminal-line">
                   <span className="color-prompt">➜</span>
                   <span className="color-dim"> ~</span>
+                  <span className="color-command"> git clone https://github.com/christian-fx/Devfolio.git</span>
+                </div>
+                <div className="terminal-line">
+                  <span className="color-prompt">➜</span>
+                  <span className="color-dim"> ~</span>
+                  <span className="color-command"> cd Devfolio && npm install</span>
+                </div>
+                <div className="terminal-line">
+                  <span className="color-prompt">➜</span>
+                  <span className="color-dim"> ~</span>
                   <span className="color-command"> npx devfolio init</span>
                 </div>
 
@@ -193,8 +203,8 @@ export default function Home() {
                 <div className="workflow-step">
                   <div className="step-number">1</div>
                   <div className="step-content">
-                    <h3>Run the CLI command</h3>
-                    <p>Execute <code style={{ fontFamily: 'monospace' }}>npx devfolio</code> via your terminal. It will prompt you for your GitHub username and preferred template.</p>
+                    <h3>Clone and Run</h3>
+                    <p>Clone the repo, run <code style={{ fontFamily: 'monospace' }}>npm install</code>, then execute <code style={{ fontFamily: 'monospace' }}>npx devfolio init</code>. It will prompt you for your GitHub username and preferred template.</p>
                   </div>
                 </div>
                 <div className="workflow-step">

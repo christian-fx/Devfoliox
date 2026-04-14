@@ -2,7 +2,10 @@
 
 > **Generate a ready-to-run portfolio website straight from your GitHub username — in seconds.**
 
-[![npm version](https://img.shields.io/npm/v/devfoliox.svg)](https://www.npmjs.com/package/devfoliox)
+> [!IMPORTANT]
+> **Devfolio is currently in early access.** We haven't published the package to the official npm registry yet (Coming Soon). For now, please clone the repository to run the CLI tool locally as shown in the [Quick Start](#quick-start) guide.
+
+<!-- [![npm version](https://img.shields.io/npm/v/devfolio.svg)](https://www.npmjs.com/package/devfolio) -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -32,7 +35,7 @@ Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered
 
 ## Features
 
-- **One-command scaffolding** — `npx devfolio init` and you're done.
+- **One-command scaffolding** — Clone and run `npx devfolio init` and you're done.
 - **Live GitHub data** — repos, stars, languages, bio, and avatar are fetched at runtime from the GitHub API, so your portfolio stays current automatically.
 - **Multiple architectures** — choose from React, Next.js, Vanilla JS, and HTML/CSS portfolio templates.
 - **Vite-powered** — lightning-fast dev server and optimised production builds.
@@ -60,7 +63,16 @@ Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered
 
 > **Prerequisite:** Node.js ≥ 18 and npm ≥ 9.
 
+Since Devfolio is not yet on npm, you need to clone the repository and run it locally:
+
 ```bash
+# 1. Clone the repository
+git clone https://github.com/christian-fx/Devfolio.git
+
+# 2. Install dependencies
+cd Devfolio && npm install
+
+# 3. Run the initialization wizard
 npx devfolio init
 ```
 
@@ -95,7 +107,8 @@ Open `http://localhost:5173` to preview your portfolio.
 ## How It Works
 
 ```
-npx devfoliox init
+git clone & npx devfolio init
+```
      │
      ▼
 ┌─────────────────────────────────┐
@@ -137,7 +150,7 @@ More templates are in development. Community contributions are welcome — see [
 
 ## Project Structure
 
-After running `npx devfolio init`, a standard React generated layout looks like this:
+After running the Devfolio CLI, a standard React generated layout looks like this:
 
 ```
 portfolio-your-username/
@@ -182,6 +195,7 @@ Full documentation, CLI reference, and a live template showcase can be found at:
 
 To spin up the docs locally:
 ```bash
+# From the root directory
 cd docs
 npm install
 npm run dev
