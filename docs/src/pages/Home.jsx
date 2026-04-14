@@ -37,7 +37,7 @@ export default function Home() {
           <div className="container">
             <div className="badge">
               <span style={{ color: 'var(--primary)', marginRight: '8px', fontWeight: 700 }}>New</span>
-              Devfolio v1.0
+              Devfolio v0.1.0
               <iconify-icon icon="lucide:arrow-right" style={{ fontSize: '14px', marginLeft: '4px' }}></iconify-icon>
             </div>
 
@@ -245,6 +245,44 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="section" id="team" style={{ borderTop: '1px solid var(--border)' }}>
+          <div className="container">
+            <div className="text-center" style={{ marginBottom: '40px' }}>
+              <h2 className="title-md">Built by Developers, for Developers</h2>
+              <p className="subtitle">Meet the core team behind the engine, templates, and documentation.</p>
+            </div>
+
+            <div className="features-grid">
+              {[
+                { name: 'Christian Akabueze', role: 'Founder & Docs Build', github: 'Christian-fx' },
+                { name: 'Gidoen Onyegbula', role: 'CLI Core & Data Layer', github: 'Gfrosh' },
+                { name: 'Allwell Azubike', role: 'React Modern Template', github: 'allwellazubike' },
+                { name: 'Maduka Jesse Nnamdi', role: 'React Minimal Template', github: 'Jesse-23' },
+                { name: 'Okaekwu Kemdy Osmond', role: 'Vanilla Templates', github: 'OsmondJnr' }
+              ].map((member, index) => (
+                <div key={index} className="feature-card team-card" style={{ textAlign: 'center' }}>
+                  <div style={{ marginBottom: '20px', position: 'relative', display: 'inline-block' }}>
+                    <img 
+                      src={`https://github.com/${member.github}.png`} 
+                      alt={member.name} 
+                      style={{ width: '80px', height: '80px', borderRadius: '50%', border: '2px solid var(--primary)', padding: '2px' }}
+                    />
+                    <div style={{ position: 'absolute', bottom: '0', right: '0', background: 'var(--primary)', color: 'white', width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <iconify-icon icon="lucide:github" style={{ fontSize: '14px' }}></iconify-icon>
+                    </div>
+                  </div>
+                  <h3 className="feature-title" style={{ fontSize: '18px', marginBottom: '4px' }}>{member.name}</h3>
+                  <p className="feature-desc" style={{ fontSize: '14px', fontStyle: 'italic', color: 'var(--primary)', fontWeight: 600, marginBottom: '12px' }}>{member.role}</p>
+                  <a href={`https://github.com/${member.github}`} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '6px 16px', fontSize: '12px', border: '1px solid var(--border)' }}>
+                    View Profile
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </section>

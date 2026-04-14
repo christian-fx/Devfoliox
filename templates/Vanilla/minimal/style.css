@@ -501,6 +501,22 @@ section {
     flex-wrap: wrap;
 }
 
+.watermark {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.watermark:hover {
+    opacity: 1;
+}
+
+.watermark a {
+    color: var(--primary);
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 640px) {
     .minimal-container {

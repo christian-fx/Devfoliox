@@ -533,13 +533,22 @@ export default function App() {
           <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#2e2926", textTransform: "uppercase", letterSpacing: "0.1em" }}>
             © {new Date().getFullYear()} {profile.name || profile.login}
           </span>
-          <a href={profile.html_url} target="_blank" rel="noreferrer"
-            style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#2e2926", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em", transition: "color 0.2s" }}
-            onMouseEnter={e => e.currentTarget.style.color = "#9a8f87"}
-            onMouseLeave={e => e.currentTarget.style.color = "#2e2926"}
-          >
-            @{profile.login}
-          </a>
+          <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+            <a href="https://github.com/christian-fx/Devfolio" target="_blank" rel="noreferrer"
+              style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#2e2926", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em", transition: "color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.color = "#f97316"}
+              onMouseLeave={e => e.currentTarget.style.color = "#2e2926"}
+            >
+              Built with Devfolio
+            </a>
+            <a href={profile.html_url} target="_blank" rel="noreferrer"
+              style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#2e2926", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em", transition: "color 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.color = "#9a8f87"}
+              onMouseLeave={e => e.currentTarget.style.color = "#2e2926"}
+            >
+              @{profile.login}
+            </a>
+          </div>
         </div>
       </footer>
     </div>
