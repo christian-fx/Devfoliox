@@ -49,7 +49,7 @@ Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered
 ## Tech Stack
 
 | Layer | Technology |
-|---|---|
+| --- | --- |
 | CLI Engine | Node.js, [Commander.js](https://github.com/tj/commander.js), [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) |
 | Core Frameworks | [React](https://react.dev/), [Next.js](https://nextjs.org/) |
 | Build Tool | [Vite](https://vitejs.dev/) |
@@ -108,9 +108,8 @@ Open `http://localhost:5173` to preview your portfolio.
 
 ```
 git clone & npx devfolio init
-```
-     │
-     ▼
+         │
+         ▼
 ┌─────────────────────────────────┐
 │  CLI (Node.js)                  │
 │  • Prompts for GitHub username  │
@@ -138,9 +137,8 @@ The CLI copies the chosen template into a new directory named `portfolio-<userna
 
 ## Templates
 
-
 | Template | Description |
-|---|---|
+| --- | --- |
 | **modern** | Dark mode, animated cards, filterable project grid, modal on click |
 | **minimal** | Light mode, clean list layout, inline expand, no animation library |
 
@@ -194,6 +192,7 @@ Full documentation, CLI reference, and a live template showcase can be found at:
 **[devfolio-six-nu.vercel.app](https://devfolio-six-nu.vercel.app)**
 
 To spin up the docs locally:
+
 ```bash
 # From the root directory
 cd docs
@@ -208,11 +207,11 @@ npm run dev
 This project was built by a team. Big shoutout to everyone who made it happen:
 
 | Name | Role | GitHub |
-|---|---|---|
+| --- | --- | --- |
 | Gidoen Onyegbula | CLI Core & GitHub Data Layer | [@Gfrosh](https://github.com/Gfrosh) |
 | Allwell Azubike | React Modern Template | [@allwellazubike](https://github.com/allwellazubike) |
 | Maduka Jesse Nnamdi | React Minimal Template | [@Jesse-23](https://github.com/Jesse-23) |
-| Okaekwu Kemdy Osmond| Vanilla (HTML/CSS/JS) Templates | [@OsmondJnr](https://github.com/OsmondJnr) |
+| Okaekwu Kemdy Osmond | Vanilla (HTML/CSS/JS) Templates | [@OsmondJnr](https://github.com/OsmondJnr) |
 | Christian Akabueze | Docs Website — Design, Content & Structure | [@Christian-fx](https://github.com/Christian-fx) |
 
 ---
