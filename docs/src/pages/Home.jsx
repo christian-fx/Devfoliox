@@ -90,6 +90,9 @@ export default function Home() {
                   <span style={{ color: '#ffbd2e', marginRight: '6px' }}>?</span> What is your GitHub username? <span className="color-prompt">christian-fx</span>
                 </div>
                 <div className="terminal-line color-dim">
+                  <span style={{ color: '#ffbd2e', marginRight: '6px' }}>?</span> Which tech stack would you like to use? <span className="color-prompt">Next.js</span>
+                </div>
+                <div className="terminal-line color-dim">
                   <span style={{ color: '#ffbd2e', marginRight: '6px' }}>?</span> Which template would you like to use? <span className="color-prompt">modern</span>
                 </div>
 
@@ -263,7 +266,8 @@ export default function Home() {
                 { name: 'Gidoen Onyegbula', role: 'CLI Core & Data Layer', github: 'Gfrosh' },
                 { name: 'Allwell Azubike', role: 'React Modern Template', github: 'allwellazubike' },
                 { name: 'Maduka Jesse Nnamdi', role: 'React Minimal Template', github: 'Jesse-23' },
-                { name: 'Okaekwu Kemdy Osmond', role: 'Vanilla Templates', github: 'OsmondJnr' }
+                { name: 'Okaekwu Kemdy Osmond', role: 'Vanilla Templates', github: 'OsmondJnr' },
+                { name: 'Jonaka Udu', role: 'Next.js Templates Lead', github: 'Udu-Jonaka' }
               ].map((member, index) => (
                 <div key={index} className="feature-card team-card" style={{ textAlign: 'center' }}>
                   <div style={{ marginBottom: '20px', position: 'relative', display: 'inline-block' }}>

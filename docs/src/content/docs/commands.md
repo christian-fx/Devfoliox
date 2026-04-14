@@ -43,7 +43,14 @@ npx devfolio generate your-github-handle
 npx devfolio generate your-github-handle --template modern
 ```
 
+**Force an overwrite of an existing project:**
+```bash
 npx devfolio generate your-github-handle --force
+```
+
+**Generate with specific stack and template:**
+```bash
+npx devfolio generate your-github-handle --stack Next.js --template modern
 ```
 
 ## The `list-templates` Command

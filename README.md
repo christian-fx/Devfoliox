@@ -212,6 +212,7 @@ This project was built by a team. Big shoutout to everyone who made it happen:
 | Allwell Azubike | React Modern Template | [@allwellazubike](https://github.com/allwellazubike) |
 | Maduka Jesse Nnamdi | React Minimal Template | [@Jesse-23](https://github.com/Jesse-23) |
 | Okaekwu Kemdy Osmond | Vanilla (HTML/CSS/JS) Templates | [@OsmondJnr](https://github.com/OsmondJnr) |
+| Jonaka Udu | Next.js Templates | [@Udu-Jonaka](https://github.com/Udu-Jonaka) |
 | Christian Akabueze | Docs Website — Design, Content & Structure | [@Christian-fx](https://github.com/Christian-fx) |
 
 ---
