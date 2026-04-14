@@ -218,8 +218,13 @@ function App() {
             ))}
           </div>
 
-          <div className="mt-24 md:mt-32 text-[10px] text-slate-300 uppercase tracking-widest font-sans">
-            © {new Date().getFullYear()} {userData.profile.name}. All rights reserved.
+          <div className="mt-24 md:mt-32 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-slate-300 uppercase tracking-widest font-sans">
+            <div>
+              © {new Date().getFullYear()} {userData.profile.name}. All rights reserved.
+            </div>
+            <a href="https://github.com/christian-fx/Devfolio" target="_blank" rel="noreferrer" className="hover:text-brand transition-colors flex items-center gap-1">
+              Built with Devfolio
+            </a>
           </div>
         </motion.div>
       </footer>

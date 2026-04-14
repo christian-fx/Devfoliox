@@ -989,6 +989,18 @@ footer {
 }
 .footer-left strong { color: var(--text-2); }
 
+.watermark {
+  opacity: 0.5;
+  transition: opacity var(--transition);
+}
+.watermark:hover {
+  opacity: 1;
+}
+.watermark .footer-link {
+  color: var(--accent);
+  font-weight: 500;
+}
+
 .footer-right {
   display: flex;
   align-items: center;
