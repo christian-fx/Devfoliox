@@ -6,12 +6,12 @@ export default function Footer({ profile }) {
         reserved.
       </div>
       <a
-        href="https://github.com/christian-fx/Devfolio"
+        href="https://github.com/christian-fx/Devfoliox"
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         className="text-[10px] text-slate-300 hover:text-slate-400 transition-colors uppercase tracking-widest block mt-4"
       >
-        Built with Devfolio
+        Built with Devfoliox
       </a>
     </footer>
   );

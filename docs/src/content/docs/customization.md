@@ -1,12 +1,12 @@
-# Customization
+# Customization & Styling
 
-The ultimate magic of Devfolio is that we enforce absolutely **zero vendor lock-in**. 
+The ultimate magic of Devfoliox is that we enforce absolutely **zero vendor lock-in**. 
 
-Once the CLI finishes generating your portfolio, you natively own every single file. The entire localized project is standard React and Tailwind CSS. You do not need to learn a proprietary "Devfolio system".
+Once the CLI finishes generating your portfolio, you natively own every single file. The entire localized project is standard React and Tailwind CSS. You do not need to learn a proprietary "Devfoliox system".
 
-## Overriding the Theme
+## Global Color System
 
-We built Devfolio entirely on Tailwind utility classes mapped strictly to CSS Variables. To dramatically change your site's color scheme in 10 seconds, open your generated `index.css` file:
+We built Devfoliox entirely on Tailwind utility classes mapped strictly to CSS Variables. To dramatically change your site's color scheme in 10 seconds, open your generated `index.css` file:
 
 ```css
 :root {

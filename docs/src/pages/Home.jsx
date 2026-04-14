@@ -37,7 +37,7 @@ export default function Home() {
           <div className="container">
             <div className="badge">
               <span style={{ color: 'var(--primary)', marginRight: '8px', fontWeight: 700 }}>New</span>
-              Devfolio v0.1.0
+              Devfoliox v1.0.0
               <iconify-icon icon="lucide:arrow-right" style={{ fontSize: '14px', marginLeft: '4px' }}></iconify-icon>
             </div>
 
@@ -68,22 +68,12 @@ export default function Home() {
                 <div className="terminal-line">
                   <span className="color-prompt">➜</span>
                   <span className="color-dim"> ~</span>
-                  <span className="color-command"> git clone https://github.com/christian-fx/Devfolio.git</span>
-                </div>
-                <div className="terminal-line">
-                  <span className="color-prompt">➜</span>
-                  <span className="color-dim"> ~</span>
-                  <span className="color-command"> cd Devfolio && npm install</span>
-                </div>
-                <div className="terminal-line">
-                  <span className="color-prompt">➜</span>
-                  <span className="color-dim"> ~</span>
-                  <span className="color-command"> npx devfolio init</span>
+                  <span className="color-command"> npx devfoliox init</span>
                 </div>
 
                 <div className="terminal-line color-highlight" style={{ marginTop: '16px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <iconify-icon icon="lucide:rocket"></iconify-icon>
-                  Devfolio Initialization Wizard
+                  Devfoliox Initialization Wizard
                 </div>
 
                 <div className="terminal-line color-dim" style={{ marginTop: '12px' }}>
@@ -206,15 +196,15 @@ export default function Home() {
                 <div className="workflow-step">
                   <div className="step-number">1</div>
                   <div className="step-content">
-                    <h3>Clone and Run</h3>
-                    <p>Clone the repo, run <code style={{ fontFamily: 'monospace' }}>npm install</code>, then execute <code style={{ fontFamily: 'monospace' }}>npx devfolio init</code>. It will prompt you for your GitHub username and preferred template.</p>
+                    <h3>Run the Command</h3>
+                    <p>Simply run <code style={{ fontFamily: 'monospace' }}>npx devfoliox init</code> in your terminal. There is no need to clone any repository manually. The assistant will guide you through the setup.</p>
                   </div>
                 </div>
                 <div className="workflow-step">
                   <div className="step-number">2</div>
                   <div className="step-content">
                     <h3>Data is fetched automatically</h3>
-                    <p>Devfolio connects to the GitHub REST API at runtime, pulling down your repositories, languages, bio, and avatar instantly.</p>
+                    <p>Devfoliox connects to the GitHub REST API at runtime, pulling down your repositories, languages, bio, and avatar instantly.</p>
                   </div>
                 </div>
                 <div className="workflow-step">

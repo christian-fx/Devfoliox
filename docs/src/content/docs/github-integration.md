@@ -1,6 +1,6 @@
 # GitHub Integration
 
-The backbone of Devfolio is its seamless connection to the GitHub Public REST API. 
+The backbone of Devfoliox is its seamless connection to the GitHub Public REST API. 
 
 ## How It Works
 When your React application mounts in the browser, the `useGitHub.js` hook immediately fires asynchronous GET requests to GitHub's servers to construct your profile.

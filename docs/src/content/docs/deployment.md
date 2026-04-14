@@ -1,6 +1,6 @@
-# Deployment
+# Deployment Guide
 
-Because Devfolio generates a completely standard Vite React application, deploying it to production takes literal seconds entirely for free.
+Because Devfoliox generates a completely standard Vite React application, deploying it to production takes literal seconds entirely for free.
 
 ## Deploying to Vercel (Recommended)
 

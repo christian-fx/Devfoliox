@@ -3,7 +3,7 @@ const runInteractiveGenerate = require('./utils/prompt');
 const runGenerate = require('./utils/execute');
 
 program
-    .name('devfolio')
+    .name('devfoliox')
     .description('Generate a developer portfolio from your GitHub profile')
     .version('1.0.0');
 
@@ -20,7 +20,7 @@ program
 
 
 
-// ONE-LINER FOR NON-INTERACTIVE USAGE (eg: npx devfolio generate <username> -t <template> -s <stack>)
+// ONE-LINER FOR NON-INTERACTIVE USAGE (eg: npx devfoliox init <username> -t <template> -s <stack>)
 program
     .command('generate')
     .description('Generate a portfolio for the given GitHub username in a one-line command')

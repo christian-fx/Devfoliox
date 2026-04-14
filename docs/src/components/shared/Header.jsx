@@ -16,7 +16,7 @@ export default function Header({ onDocsMenuClick, docsMenuLabel, isSidebarOpen }
   }, []);
 
   useEffect(() => {
-    fetch('https://api.github.com/repos/christian-fx/devfolio')
+    fetch('https://api.github.com/repos/christian-fx/devfoliox')
       .then(res => res.json())
       .then(data => {
         if (data && typeof data.stargazers_count === 'number') {
@@ -45,7 +45,7 @@ export default function Header({ onDocsMenuClick, docsMenuLabel, isSidebarOpen }
           <div className="header-main-row">
             <Link to="/" className="logo">
               <iconify-icon icon="lucide:terminal" style={{ fontSize: '24px' }}></iconify-icon>
-              Devfolio
+              Devfoliox
             </Link>
             
             <nav className="nav-links">
@@ -56,7 +56,7 @@ export default function Header({ onDocsMenuClick, docsMenuLabel, isSidebarOpen }
             </nav>
 
             <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <a href="https://github.com/christian-fx/devfolio" target="_blank" rel="noopener noreferrer" className="btn btn-secondary desktop-only" style={{ padding: '8px 16px', fontSize: '13px', border: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <a href="https://github.com/christian-fx/devfoliox" target="_blank" rel="noopener noreferrer" className="btn btn-secondary desktop-only" style={{ padding: '8px 16px', fontSize: '13px', border: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                 <iconify-icon icon="lucide:github" style={{ fontSize: '16px' }}></iconify-icon>
                 Star on GitHub
               </a>
@@ -93,7 +93,7 @@ export default function Header({ onDocsMenuClick, docsMenuLabel, isSidebarOpen }
         <Link onClick={closeMenu} to="/templates" className={`nav-link ${location.pathname === '/templates' ? 'nav-link-active' : ''}`}>Templates</Link>
         <Link onClick={closeMenu} to="/showcase" className={`nav-link ${location.pathname === '/showcase' ? 'nav-link-active' : ''}`}>Showcase</Link>
         <Link onClick={closeMenu} to="/documentation" className={`nav-link ${location.pathname.startsWith('/documentation') ? 'nav-link-active' : ''}`}>Documentation</Link>
-        <a onClick={closeMenu} href="https://github.com/christian-fx/devfolio" target="_blank" rel="noopener noreferrer" className="btn btn-primary nav-link-btn" style={{ width: '100%', marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+        <a onClick={closeMenu} href="https://github.com/christian-fx/devfoliox" target="_blank" rel="noopener noreferrer" className="btn btn-primary nav-link-btn" style={{ width: '100%', marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
           <iconify-icon icon="lucide:github" style={{ fontSize: '18px' }}></iconify-icon>
           Star on GitHub
         </a>

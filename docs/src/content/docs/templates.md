@@ -1,6 +1,6 @@
 # Templates & Stacks
 
-Devfolio provides a flexible architecture where you can choose both your **Tech Stack** and your **Visual Template**.
+Devfoliox provides a flexible architecture where you can choose both your **Tech Stack** and your **Visual Template**.
 
 ## Supported Stacks
 

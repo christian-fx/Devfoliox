@@ -112,7 +112,7 @@ export default function DocPage() {
         <div style={{ marginTop: '64px', paddingTop: '24px', borderTop: '1px solid var(--border)', opacity: 0.8, fontSize: '13px', display: 'flex', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
             <a 
-              href={`https://github.com/christian-fx/Devfolio/blob/main/docs/src/content/docs/${slug}.md`} 
+              href={`https://github.com/christian-fx/Devfoliox/blob/main/docs/src/content/docs/${slug}.md`} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="doc-metadata-link"
@@ -122,7 +122,7 @@ export default function DocPage() {
               View on GitHub
             </a>
             <a 
-              href={`https://github.com/christian-fx/Devfolio/edit/main/docs/src/content/docs/${slug}.md`} 
+              href={`https://github.com/christian-fx/Devfoliox/edit/main/docs/src/content/docs/${slug}.md`} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="doc-metadata-link"

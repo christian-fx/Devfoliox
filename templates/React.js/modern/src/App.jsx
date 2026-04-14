@@ -534,12 +534,12 @@ export default function App() {
             © {new Date().getFullYear()} {profile.name || profile.login}
           </span>
           <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-            <a href="https://github.com/christian-fx/Devfolio" target="_blank" rel="noreferrer"
+            <a href="https://github.com/christian-fx/Devfoliox" target="_blank" rel="noreferrer"
               style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#2e2926", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em", transition: "color 0.2s" }}
               onMouseEnter={e => e.currentTarget.style.color = "#f97316"}
               onMouseLeave={e => e.currentTarget.style.color = "#2e2926"}
             >
-              Built with Devfolio
+              Built with Devfoliox
             </a>
             <a href={profile.html_url} target="_blank" rel="noreferrer"
               style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#2e2926", textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.1em", transition: "color 0.2s" }}
