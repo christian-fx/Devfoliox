@@ -34,7 +34,7 @@ export default function Footer() {
           <div className="footer-col">
             <div className="logo" style={{ marginBottom: '16px' }}>
               <iconify-icon icon="lucide:terminal" style={{ fontSize: '24px' }}></iconify-icon>
-              Devfolio
+              Devfoliox
             </div>
             <p style={{ color: 'var(--muted-foreground)', fontSize: '14px', lineHeight: '1.6', maxWidth: '280px' }}>
               The fastest way to build and deploy a developer portfolio powered by your live GitHub data.
@@ -46,7 +46,7 @@ export default function Footer() {
               <li><Link to="/#features" className={activeClass('/#features')}>Features</Link></li>
               <li><Link to="/templates" className={activeClass('/templates')}>Templates</Link></li>
               <li><Link to="/showcase" className={activeClass('/showcase')}>Showcase</Link></li>
-              <li><a href="https://github.com/christian-fx/devfolio/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
+              <li><a href="https://github.com/christian-fx/devfoliox/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
             </ul>
           </div>
           <div className="footer-col">
@@ -61,17 +61,17 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Community</h4>
             <ul className="footer-links">
-              <li><a href="https://github.com/christian-fx/devfolio/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a></li>
-              <li><a href="https://discord.gg/devfolio" target="_blank" rel="noopener noreferrer">Discord Server</a></li>
+              <li><a href="https://github.com/christian-fx/devfoliox/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a></li>
+              <li><a href="https://discord.gg/devfoliox" target="_blank" rel="noopener noreferrer">Discord Server</a></li>
               <li><a href="https://twitter.com/christian_fx" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
-              <li><a href="https://github.com/christian-fx/devfolio/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribute</a></li>
+              <li><a href="https://github.com/christian-fx/devfoliox/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribute</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <div>© {new Date().getFullYear()} Devfolio Open Source. MIT License.</div>
+          <div>© {new Date().getFullYear()} Devfoliox Open Source. MIT License.</div>
           <div className="social-links">
-            <a href="https://github.com/christian-fx/devfolio" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/christian-fx/devfoliox" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
               <iconify-icon icon="lucide:github" style={{ fontSize: '20px' }}></iconify-icon>
             </a>
             <a href="https://twitter.com/christian_fx" aria-label="Twitter" target="_blank" rel="noopener noreferrer">

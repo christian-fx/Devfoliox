@@ -1,6 +1,6 @@
 # Configuration
 
-Devfolio is designed to be a "Zero Config" tool. Out of the box, it requires absolutely no manual mapping. However, under the hood, Devfolio generates a strict configuration file that powers the application.
+Devfoliox is designed to be a "Zero Config" tool. Out of the box, it requires absolutely no manual mapping. However, under the hood, Devfoliox generates a strict configuration file that powers the application.
 
 ### The `config.js` File
 
@@ -27,3 +27,17 @@ While the CLI handles this for you, you can manually update the `GITHUB_USERNAME
 
 > [!IMPORTANT]
 > If you change your GitHub username later, you do not need to regenerate your portfolio! Simply update the configuration file and restart the development server.
+
+# Customization & Styling
+
+The ultimate magic of Devfoliox is that we enforce absolutely **zero vendor lock-in**. 
+
+Once the CLI finishes generating your portfolio, you natively own every single file. The entire localized project is standard React and Tailwind CSS. You do not need to learn a proprietary "Devfoliox system".
+
+## Global Color System
+
+We built Devfoliox entirely on Tailwind utility classes mapped strictly to CSS Variables. To dramatically change your site's color scheme in 10 seconds, open your generated `index.css` file:
+
+# Environment Variables
+
+You **do not** strictly need any environment variables to run Devfoliox locally, nor do you need them in production for moderate traffic.

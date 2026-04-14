@@ -18,12 +18,12 @@ export default function Footer({ profile, isMobile }) {
       </div>
       <div className="text-center mt-6">
         <a
-          href="https://github.com/christian-fx/Devfolio"
+          href="https://github.com/christian-fx/Devfoliox"
           target="_blank"
-          rel="noreferrer"
-          className="font-mono text-[10px] text-slate-700 hover:text-slate-500 tracking-widest transition-colors"
+          rel="noopener noreferrer"
+          className="text-xs font-mono uppercase tracking-widest text-primary hover:text-orange-500 transition-colors"
         >
-          Built with Devfolio
+          Built with Devfoliox
         </a>
       </div>
     </footer>

@@ -1,24 +1,24 @@
-# Options & Flags
+# Command Options
 
-When executing Devfolio commands inside terminal scripts or CI pipelines, you can chain multiple configuration flags.
+When executing Devfoliox commands inside terminal scripts or CI pipelines, you can chain multiple configuration flags.
 
-## Global Flags
+## Usage
 
-These flags can be appended to almost any Devfolio command.
+These flags can be appended to almost any Devfoliox command.
 
-| Flag | Shorthand | Description |
-|---|---|---|
-| `--help` | `-h` | Prints out the help manual and exits the program |
-| `--version` | `-v` | Outputs the current Devfolio software version |
-| `--template <name>` | `-t` | Dictates the architectural layout (Accepts: `minimal`, `modern`) |
+| Option | Shorthand | Description |
+| :--- | :--- | :--- |
+| `--help` | `-h` | Display help for the current command |
+| `--version` | `-v` | Outputs the current Devfoliox software version |
 | `--stack <name>` | `-s` | Defines the underlying tech stack (Accepts: `React.js`, `Vanilla`, `Next.js`) |
-| `--force` | `-f` | Force-overwrites heavily populated directories without asking |
-| `--no-install` | `-n` | Scaffolds the files but skips the `npm install` phase entirely |
+| `--template <name>` | `-t` | Defines the visual template (Accepts: `minimal`, `modern`) |
+| `--force` | `-f` | Force overwrite an existing project directory |
+| `--no-install` | `-n` | Skip the automatic `npm install` post-scaffold |
 
-## Example Usage
+## Complex Scenario Example
 
-Combining flags to create a deeply automated scaffolding script that skips NPM installations to save execution time:
+Running a headless, forced generation for a Next.js modern portfolio:
 
 ```bash
-npx devfolio generate christian-fx -t modern -f -n
+npx devfoliox generate christian-fx -t modern -s Next.js -f -n
 ```

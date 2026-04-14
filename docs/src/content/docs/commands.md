@@ -1,13 +1,13 @@
 # Commands
 
-The Devfolio CLI is designed to be highly intuitive. It provides both an interactive guided wizard for beginners and a robust suite of parameterized commands for power users and CI/CD environments.
+The Devfoliox CLI is designed to be highly intuitive. It provides both an interactive guided wizard for beginners and a robust suite of parameterized commands for power users and CI/CD environments.
 
 ## The Interactive Wizard
 
 Running the `init` command boots up the prompt-driven wizard. This is the recommended way for new users to scaffold their first portfolio.
 
 ```bash
-npx devfolio init
+npx devfoliox init
 ```
 
 **Wizard Flow:**
@@ -17,10 +17,10 @@ npx devfolio init
 
 ## Command Discovery & Help
 
-Running Devfolio without any subcommands (or using the `--help` flag) displays the help manual, which lists all available commands and global options.
+Running Devfoliox without any subcommands (or using the `--help` flag) displays the help manual, which lists all available commands and global options.
 
 ```bash
-npx devfolio --help
+npx devfoliox --help
 ```
 
 ## The `generate` Command
@@ -28,29 +28,29 @@ npx devfolio --help
 If you want to completely bypass the interactive prompts (useful for rapid scaffolding or automated bash scripts), use the direct `generate` operator.
 
 ```bash
-npx devfolio generate <username> [options]
+npx devfoliox generate <username> [options]
 ```
 
 ### Practical Examples
 
 **Standard generation:**
 ```bash
-npx devfolio generate your-github-handle
+npx devfoliox generate your-github-handle
 ```
 
 **Generation with specific strict templates:**
 ```bash
-npx devfolio generate your-github-handle --template modern
+npx devfoliox generate your-github-handle --template modern
 ```
 
 **Force an overwrite of an existing project:**
 ```bash
-npx devfolio generate your-github-handle --force
+npx devfoliox generate your-github-handle --force
 ```
 
 **Generate with specific stack and template:**
 ```bash
-npx devfolio generate your-github-handle --stack Next.js --template modern
+npx devfoliox generate your-github-handle --stack Next.js --template modern
 ```
 
 ## The `list-templates` Command
@@ -58,8 +58,8 @@ npx devfolio generate your-github-handle --stack Next.js --template modern
 Use this command to quickly see all available portfolio templates before running an initialization.
 
 ```bash
-npx devfolio list-templates
+npx devfoliox list-templates
 ```
 
 > [!INFO]
-> If you omit the template flag during the `generate` command, Devfolio will automatically default to the **minimal** template profile in the background.
+> If you omit the template flag during the `generate` command, Devfoliox will automatically default to the **minimal** template profile in the background.

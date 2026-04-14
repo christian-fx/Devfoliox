@@ -13,7 +13,7 @@ export const TEMPLATE_DATA = [
       '/images/templates/reactMinimal2.png',
       '/images/templates/reactMinimal3.png'
     ],
-    command: 'npx devfolio generate your-github-handle --template minimal --stack React.js',
+    command: 'npx devfoliox generate your-github-handle --template minimal --stack React.js',
     previewUrl: '#',
     stack: [
       { name: 'React', icon: 'logos:react' },
@@ -43,7 +43,7 @@ export const TEMPLATE_DATA = [
       '/images/templates/reactModern3.png',
       '/images/templates/reactModern4.png'
     ],
-    command: 'npx devfolio generate your-github-handle --template modern --stack React.js',
+    command: 'npx devfoliox generate your-github-handle --template modern --stack React.js',
     previewUrl: '#',
     stack: [
       { name: 'React', icon: 'logos:react' },
@@ -70,7 +70,7 @@ export const TEMPLATE_DATA = [
       '/images/templates/vanillaMinimal1.png',
       '/images/templates/vanillaMinimal2.png'
     ],
-    command: 'npx devfolio generate your-github-handle --template minimal --stack Vanilla',
+    command: 'npx devfoliox generate your-github-handle --template minimal --stack Vanilla',
     previewUrl: '#',
     stack: [
       { name: 'JavaScript', icon: 'logos:javascript' },
@@ -100,7 +100,7 @@ export const TEMPLATE_DATA = [
       '/images/templates/vanillaModern3.png',
       '/images/templates/vanillaModern4.png'
     ],
-    command: 'npx devfolio generate your-github-handle --template modern --stack Vanilla',
+    command: 'npx devfoliox generate your-github-handle --template modern --stack Vanilla',
     previewUrl: '#',
     stack: [
       { name: 'JavaScript', icon: 'logos:javascript' },
@@ -127,7 +127,7 @@ export const TEMPLATE_DATA = [
       '/images/templates/nextMinimal1.png',
       '/images/templates/nextMinimal2.png'
     ],
-    command: 'npx devfolio generate your-github-handle --template minimal --stack Next.js',
+    command: 'npx devfoliox generate your-github-handle --template minimal --stack Next.js',
     previewUrl: '#',
     stack: [
       { name: 'Next.js', icon: 'logos:nextjs-icon' },
@@ -155,7 +155,7 @@ export const TEMPLATE_DATA = [
       '/images/templates/nextModern2.png',
       '/images/templates/nextModern3.png'
     ],
-    command: 'npx devfolio generate your-github-handle --template modern --stack Next.js',
+    command: 'npx devfoliox generate your-github-handle --template modern --stack Next.js',
     previewUrl: '#',
     stack: [
       { name: 'Next.js', icon: 'logos:nextjs-icon' },

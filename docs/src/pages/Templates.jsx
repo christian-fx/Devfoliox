@@ -114,7 +114,7 @@ export default function Templates() {
               </div>
               <h2 className="cta-title">See them in action</h2>
               <p className="cta-text" style={{ maxWidth: '600px', margin: '16px auto 32px' }}>
-                Want to see what elite developers are building with these template architectures globally? Discover beautifully customized live implementations in the Devfolio Community Showcase.
+                Want to see what elite developers are building with these template architectures globally? Discover beautifully customized live implementations in the Devfoliox Community Showcase.
               </p>
               <div className="cta-actions" style={{ justifyContent: 'center' }}>
                 <Link to="/showcase" className="btn btn-cta-light" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>

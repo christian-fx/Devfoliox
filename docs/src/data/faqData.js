@@ -1,16 +1,16 @@
-export const FAQ_DATA = [
+const FAQ_DATA = [
   {
     category: 'General',
     questions: [
       {
         id: 'what-is-devfolio',
-        question: 'What is Devfolio?',
-        answer: 'Devfolio is a high-performance CLI tool designed to generate professional developer portfolios directly from your GitHub data. It automates the fetching of your bio, repositories, tech stack, and contribution metrics, then wraps them in premium, pre-designed templates.'
+        question: 'What is Devfoliox?',
+        answer: 'Devfoliox is a high-performance CLI tool designed to generate professional developer portfolios directly from your GitHub data. It automates the fetching of your bio, repositories, tech stack, and contribution metrics, then wraps them in premium, pre-designed templates.'
       },
       {
         id: 'is-it-free',
         question: 'Is it free to use?',
-        answer: 'Yes! Devfolio is 100% open-source (MIT licensed) and free to use for personal and commercial projects. You can generate as many portfolios as you like.'
+        answer: 'Yes! Devfoliox is 100% open-source (MIT licensed) and free to use for personal and commercial projects. You can generate as many portfolios as you like.'
       }
     ]
   },
@@ -20,12 +20,12 @@ export const FAQ_DATA = [
       {
         id: 'how-to-start',
         question: 'How do I get started?',
-        answer: 'The fastest way to start is by running `npx devfolio init` in your terminal. This will launch an interactive setup wizard that guides you through choosing your GitHub username, template, and technology stack.'
+        answer: 'The fastest way to start is by running `npx devfoliox init` in your terminal. This will launch an interactive setup wizard that guides you through choosing your GitHub username, template, and technology stack.'
       },
       {
         id: 'command-usage',
         question: 'Can I generate a portfolio without prompts?',
-        answer: 'Yes. You can use the non-interactive command: `npx devfolio generate <username> --template <template> --stack <stack>`. For example: `npx devfolio generate octane --template modern --stack React.js`.'
+        answer: 'Yes. You can use the non-interactive command: `npx devfoliox generate <username> --template <template> --stack <stack>`. For example: `npx devfoliox generate octane --template modern --stack React.js`.'
       },
       {
         id: 'supported-stacks',
@@ -45,7 +45,7 @@ export const FAQ_DATA = [
       {
         id: 'private-repos',
         question: 'Can I include my private repositories?',
-        answer: 'By default, Devfolio only fetches public data. To include private repositories, you must provide a `GITHUB_TOKEN` with the `repo` scope. The CLI will then be able to aggregate data from your private work while still keeping your source code secure.'
+        answer: 'By default, Devfoliox only fetches public data. To include private repositories, you must provide a `GITHUB_TOKEN` with the `repo` scope. The CLI will then be able to aggregate data from your private work while still keeping your source code secure.'
       }
     ]
   },
@@ -75,3 +75,5 @@ export const FAQ_DATA = [
     ]
   }
 ];
+
+export { FAQ_DATA };

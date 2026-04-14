@@ -1,6 +1,6 @@
 # Environment Variables
 
-You **do not** strictly need any environment variables to run Devfolio locally, nor do you need them in production for moderate traffic.
+You **do not** strictly need any environment variables to run Devfoliox locally, nor do you need them in production for moderate traffic.
 
 However, to bypass GitHub's 60-request-per-hour Rate Limit on popular portfolios, you can inject a Personal Access Token backing your API requests.
 

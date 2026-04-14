@@ -1,44 +1,40 @@
-# Installation
+# Installation & Setup
 
-> [!IMPORTANT]
-> **Devfolio is currently in early access.** We haven't published the package to the official npm registry yet (Coming Soon). For now, please clone the repository and run the CLI tool locally using the steps below.
+Devfoliox is designed for two types of users: developers who just want to generate a portfolio, and contributors who want to help build the engine.
 
-## Cloning the Repository
+## 1. For General Users (Project Scaffolding)
 
-To use Devfolio, you need to clone the repository to your machine, install dependencies, and then run the CLI script directly.
-
-1. **Clone the repo:**
-   ```bash
-   git clone https://github.com/christian-fx/Devfolio.git
-   ```
-
-2. **Navigate to the directory:**
-   ```bash
-   cd Devfolio
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-## Running the CLI
-
-Once dependencies are installed, you can invoke the Devfolio initialization wizard by running:
+If you just want to build your own portfolio, you do not need to install the core engine manually. Simply run the following in your terminal:
 
 ```bash
-npx devfolio init
+npx devfoliox init
 ```
 
-## Global Link (Alternative)
+The wizard will guide you through choosing your stack and template. No cloning is required.
 
-If you want to use the `devfolio` command from anywhere on your system without typing the full path to the script, you can link the package locally:
+---
 
-```bash
-npm link
-```
+## 2. For Contributors (Manual Installation)
 
-Once linked, you can run `devfolio init` in any directory.
+If you want to contribute new templates or fix bugs in the core CLI, you can clone the source code and link it locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/christian-fx/devfoliox.git
+   ```
+
+2. **Install core dependencies:**
+   ```bash
+   cd devfoliox && npm install
+   ```
+
+3. **Link the CLI locally:**
+   This allows you to test the `devfoliox` command globally while developing:
+   ```bash
+   npm link
+   ```
+
+Now you can run `devfoliox init` from any folder, and it will use your local modified source code.
 
 > [!WARNING]
-> Do not attempt to install Devfolio into an existing application via `npm install devfolio --save`. Devfolio is a scaffolding tool designed to *generate* projects, not to run as a dependency inside them.
+> Do not attempt to install Devfoliox into an existing application via `npm install devfoliox --save`. Devfoliox is a scaffolding tool designed to *generate* projects, not to run as a dependency inside them.

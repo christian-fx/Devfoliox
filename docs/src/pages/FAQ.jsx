@@ -204,7 +204,7 @@ export default function FAQ() {
                 Join our growing community of developers on GitHub and Discord for real-time help.
               </p>
               <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="https://github.com/christian-fx/devfolio/discussions" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ gap: '8px' }}>
+                <a href="https://github.com/christian-fx/devfoliox/discussions" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ gap: '8px' }}>
                   <iconify-icon icon="lucide:github"></iconify-icon>
                   Start Discussion
                 </a>

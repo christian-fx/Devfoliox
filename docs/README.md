@@ -1,8 +1,8 @@
-# Devfolio Documentation Site
+# Devfoliox Documentation Site
 
-The official documentation, template catalog, and showcase gallery for the **Devfolio CLI** ecosystem.
+The official documentation, template catalog, and showcase gallery for the **Devfoliox CLI** ecosystem.
 
-This site is built with a minimal, high-performance dependency stack utilizing **React**, **Vite**, and **React Router**. It leverages the GitHub REST API to dynamically fetch, parse, and render live repository data—perfectly demonstrating the speed and capability of a Devfolio-generated application.
+This site is built with a minimal, high-performance dependency stack utilizing **React**, **Vite**, and **React Router**. It leverages the GitHub REST API to dynamically fetch, parse, and render live repository data—perfectly demonstrating the speed and capability of a Devfoliox-generated application.
 
 ## 🚀 Running Locally
 
@@ -33,7 +33,7 @@ To run the documentation site locally:
 The `docs` layout has been pre-configured with a custom `vercel.json` SPA routing override, meaning Vercel's edge network natively handles React Router without returning 404 dead ends.
 
 When deploying this project to Vercel:
-1. **Target the Root Directory**: After importing the overarching `devfolio` repository, you **must** configure the Vercel Root Directory manually to `docs`. 
+1. **Target the Root Directory**: After importing the overarching `devfoliox` repository, you **must** configure the Vercel Root Directory manually to `docs`. 
 2. **Framework Alignment**: Set the framework to **Vite**. Vercel will automatically configure the build command (`npm run build`) and output directory (`dist`).
 3. **Environment Security**: Safely inject your `VITE_GITHUB_TOKEN` directly into Vercel's Environment Variables panel before clicking deploy.
 
