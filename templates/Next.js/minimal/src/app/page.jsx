@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getGitHubData } from "../services/github";
-import { config } from "../config";
+import { GITHUB_USERNAME } from "../config";
 import Header from "../components/Header";
 import Stats from "../components/Stats";
 import Projects from "../components/Projects";
@@ -16,8 +16,8 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       try {
-        if (config.githubUsername && config.githubUsername !== "placeholder") {
-          setUserData(await getGitHubData(config.githubUsername));
+        if (GITHUB_USERNAME && GITHUB_USERNAME !== "placeholder") {
+          setUserData(await getGitHubData(GITHUB_USERNAME));
         } else {
           setError("GitHub username not found. Please check config.js.");
         }

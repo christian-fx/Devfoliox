@@ -23,7 +23,7 @@ export default function Footer({ profile, isMobile }) {
           rel="noreferrer"
           className="font-mono text-[10px] text-slate-700 hover:text-slate-500 tracking-widest transition-colors"
         >
-          Powered by Devfolio
+          Built with Devfolio
         </a>
       </div>
     </footer>
