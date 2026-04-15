@@ -1,6 +1,6 @@
 {
   "name": "devfoliox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate a developer portfolio from your GitHub profile in one command",
   "main": "src/index.js",
   "bin": {
@@ -34,12 +34,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "url": "git+https://github.com/christian-fx/Devfoliox.git"
+    "url": "git+https://github.com/christian-fx/devfoliox.git"
   },
   "author": "Christian Akabueze <akabuezechris432@gmail.com>",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/christian-fx/Devfoliox/issues"
+    "url": "https://github.com/christian-fx/devfoliox/issues"
   },
-  "homepage": "https://github.com/christian-fx/Devfoliox#readme"
+  "homepage": "https://github.com/christian-fx/devfoliox#readme"
 }

@@ -1,9 +1,9 @@
-# Devfoliox
+# <p align="center"><img src="https://raw.githubusercontent.com/christian-fx/devfoliox/main/docs/public/images/devfoliox-icon.svg" width="100" alt="Devfoliox Logo" /><br/>Devfoliox</p>
 
 > **Generate a ready-to-run portfolio website straight from your GitHub username — in seconds.**
 
 [![npm version](https://img.shields.io/npm/v/devfoliox.svg)](https://www.npmjs.com/package/devfoliox)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/christian-fx/devfoliox/blob/main/LICENSE)
 
 ---
 

@@ -44,7 +44,7 @@ export default function Header({ onDocsMenuClick, docsMenuLabel, isSidebarOpen }
         <div className="container header-container-inner">
           <div className="header-main-row">
             <Link to="/" className="logo">
-              <iconify-icon icon="lucide:terminal" style={{ fontSize: '24px' }}></iconify-icon>
+              <img src="/images/devfoliox-icon.svg" alt="Devfoliox Logo" style={{ width: '24px', height: '24px', borderRadius: '6px' }} />
               Devfoliox
             </Link>
             

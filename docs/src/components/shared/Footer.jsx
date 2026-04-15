@@ -33,7 +33,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-col">
             <div className="logo" style={{ marginBottom: '16px' }}>
-              <iconify-icon icon="lucide:terminal" style={{ fontSize: '24px' }}></iconify-icon>
+              <img src="/images/devfoliox-icon.svg" alt="Devfoliox Logo" style={{ width: '24px', height: '24px', borderRadius: '6px' }} />
               Devfoliox
             </div>
             <p style={{ color: 'var(--muted-foreground)', fontSize: '14px', lineHeight: '1.6', maxWidth: '280px' }}>
