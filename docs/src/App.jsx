@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Home from './pages/Home';
 import DocLayout from './components/docs/DocLayout';
 import DocPage from './pages/DocPage';
@@ -59,6 +60,9 @@ function App() {
 
       {/* Global Footer also sits outside the animation container, hidden on docs pages */}
       {!location.pathname.startsWith('/documentation') && <Footer />}
+      
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </>
   );
 }
